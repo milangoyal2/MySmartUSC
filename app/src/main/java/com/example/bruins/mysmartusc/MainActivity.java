@@ -11,18 +11,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    /*
-    if not logged in, take to LogInActivity
-    (loginActivity sets a user token)
-    */
-    if (Util.getToken() != null) {
-        Intent loginIntent = Intent(this, LoginActivity::; class.java);
+
+        Intent loginIntent = new Intent(this, LoginActivity.class);
         startActivity(loginIntent);
+
     }
 
-
-
-    finish();
 }
