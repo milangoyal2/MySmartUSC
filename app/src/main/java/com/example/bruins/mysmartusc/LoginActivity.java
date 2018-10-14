@@ -1,5 +1,6 @@
 package com.example.bruins.mysmartusc;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,8 +16,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button b1;
     EditText ed1,ed2;
-    
-    int counter = 3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +38,8 @@ public class LoginActivity extends AppCompatActivity {
                             "Redirecting...",Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
-
-
-                    counter--;
-
-
-                    if (counter == 0) {
-                        b1.setEnabled(false);
-                    }
+                    Intent loginIntent = new Intent(LoginActivity.this, ImportantSettingsActivity.class);
+                    startActivity(loginIntent);
                 }
             }
         });
