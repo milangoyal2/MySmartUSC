@@ -1,4 +1,6 @@
 package com.example.bruins.mysmartusc;
+import com.example.bruins.mysmartusc.EmailFilters;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,32 +12,48 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
 
 public class ImportantSettingsActivity extends AppCompatActivity {
 
     Button b1;
-    EditText ed1,ed2, ed3;
+    EditText imp_emails, imp_keywords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_important_settings);
-        b1 = (Button)findViewById(R.id.button);
-        ed1 = (EditText)findViewById(R.id.editText);
-        ed2 = (EditText)findViewById(R.id.editText2);
-        ed3 = (EditText)findViewById(R.id.editText3);
 
+        b1 = (Button)findViewById(R.id.button);
+        imp_emails = (EditText)findViewById(R.id.editText);
+        imp_keywords = (EditText)findViewById(R.id.editText2);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!ed1.getText().toString().isEmpty() &&
-                        !ed2.getText().toString().isEmpty() &&
-                        !ed3.getText().toString().isEmpty()) {
+                String string_emails = imp_emails.getText().toString();
+                String string_keywords = imp_keywords.getText().toString();
+
+                if(!string_emails.isEmpty() &&
+                        !string_keywords.isEmpty()) {
                     Toast.makeText(getApplicationContext(),
                             "Redirecting...",Toast.LENGTH_SHORT).show();
+                    // Parse text and populate filters class:
+                    EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+
+                    ArrayList<String> emails_list = new ArrayList<String>
+                            (Arrays.asList(string_emails.split("\\s*,\\s*")));
+                    ArrayList<String> keywords_list = new ArrayList<String>
+                            (Arrays.asList(string_keywords.split("\\s*,\\s*")));
+
+                    filters.setImpEmails(emails_list);
+                    filters.setImpKeywords(keywords_list);
+
                     // move to next layout:
-                    Intent unimSettingsIntent = new Intent(ImportantSettingsActivity.this, UnimSettingsActivity.class);
+                    Intent unimSettingsIntent = new Intent(ImportantSettingsActivity.this, UnimSettingsActivity.class).putExtra("filters", filters);
                     startActivity(unimSettingsIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Fields can't be empty",Toast.LENGTH_SHORT).show();

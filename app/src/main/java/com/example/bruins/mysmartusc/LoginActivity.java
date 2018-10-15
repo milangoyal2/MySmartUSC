@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.bruins.mysmartusc.EmailFilters;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,9 +34,17 @@ public class LoginActivity extends AppCompatActivity {
                         ed2.getText().toString().equals("admin")) {
                     Toast.makeText(getApplicationContext(),
                             "Redirecting...",Toast.LENGTH_SHORT).show();
+
+                    // Create filters class:
+                    EmailFilters myFilters = new EmailFilters();
+
                     // move to next layout:
-                    Intent ImportantSettingsIntent = new Intent(LoginActivity.this, ImportantSettingsActivity.class);
-                    startActivity(ImportantSettingsIntent);
+                    Intent intent = new Intent(LoginActivity.this, ImportantSettingsActivity.class);
+
+                    //Pass filters:
+                    intent.putExtra("filters", myFilters);
+
+                    startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
                 }

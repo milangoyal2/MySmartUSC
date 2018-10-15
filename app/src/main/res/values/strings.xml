@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MySmartUSC</string>
     <string name="title_activity_important_settings">ImportantSettingsActivity</string>
+    <string name="important_emails">Important Emails: </string>
+    <string name="important_keywords">Important Keywords: </string>
+    <string name="unimportant_emails">Unimportant Emails: </string>
+    <string name="unimportant_keywords">Unimportant Keywords: </string>
 </resources>
