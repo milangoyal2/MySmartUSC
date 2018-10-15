@@ -32,42 +32,49 @@ public class FiltersOverviewActivity extends AppCompatActivity {
 
         String imp_emails_str = "";
         for (int i = 0; i < filters.getImpEmails().size(); i++) {
-            if (i == filters.getImpEmails().size() - 1) {
-                imp_emails_str += filters.getImpEmails().get(i);
-            } else {
-                imp_emails_str += filters.getImpEmails().get(i) + ", ";
-            }
+            imp_emails_str += filters.getImpEmails().get(i) + ", ";
+
+//            if (i == filters.getImpEmails().size() - 1) {
+//                imp_emails_str += filters.getImpEmails().get(i);
+//            } else {
+//
+//            }
         }
         imp_emails.setText(imp_emails_str);
 
         String imp_keywords_str = "";
         for (int i = 0; i < filters.getImpKeywords().size(); i++) {
-            if (i == filters.getImpKeywords().size() - 1) {
-                imp_keywords_str += filters.getImpKeywords().get(i);
-            } else {
-                imp_keywords_str += filters.getImpKeywords().get(i) + ", ";
-            }
+            imp_keywords_str += filters.getImpKeywords().get(i) + ", ";
+//            if (i == filters.getImpKeywords().size() - 1) {
+//                imp_keywords_str += filters.getImpKeywords().get(i);
+//            } else {
+//
+//            }
         }
         imp_keywords.setText(imp_keywords_str);
 
         String unimp_emails_str = "";
         for (int i = 0; i < filters.getUnimpEmails().size(); i++) {
-            if (i == filters.getUnimpEmails().size() - 1) {
-                unimp_emails_str += filters.getUnimpEmails().get(i);
-            } else {
-                unimp_emails_str += filters.getUnimpEmails().get(i) + ", ";
-            }
+            unimp_emails_str += filters.getUnimpEmails().get(i) + ", ";
+//            if (i == filters.getUnimpEmails().size() - 1) {
+//                unimp_emails_str += filters.getUnimpEmails().get(i);
+//            } else {
+//                unimp_emails_str += filters.getUnimpEmails().get(i) + ", ";
+//            }
         }
         unimp_emails.setText(unimp_emails_str);
 
         String unimp_keywords_str = "";
         for (int i = 0; i < filters.getUnimpKeywords().size(); i++) {
-            if (i == filters.getUnimpKeywords().size() - 1) {
-                unimp_keywords_str += filters.getUnimpKeywords().get(i);
-            } else {
-                unimp_keywords_str += filters.getUnimpKeywords().get(i) + ", ";
-            }
+            unimp_keywords_str += filters.getUnimpKeywords().get(i) + ", ";
+
+//            if (i == filters.getUnimpKeywords().size() - 1) {
+//                unimp_keywords_str += filters.getUnimpKeywords().get(i);
+//            } else {
+//                unimp_keywords_str += filters.getUnimpKeywords().get(i) + ", ";
+//            }
+//        }
+            unimp_keywords.setText(unimp_keywords_str);
         }
-        unimp_keywords.setText(unimp_keywords_str);
     }
 }

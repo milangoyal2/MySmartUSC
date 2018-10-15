@@ -25,6 +25,10 @@
             android:name=".UnimSettingsActivity"
             android:label="UnimSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".FiltersOverviewActivity"
+            android:label="FiltersOverviewActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
