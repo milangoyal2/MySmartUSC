@@ -21,6 +21,10 @@
             android:name=".ImportantSettingsActivity"
             android:label="@string/title_activity_important_settings"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".UnimSettingsActivity"
+            android:label="UnimSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
