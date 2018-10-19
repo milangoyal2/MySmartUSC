@@ -5,4 +5,5 @@
     <string name="important_keywords">Important Keywords: </string>
     <string name="unimportant_emails">Unimportant Emails: </string>
     <string name="unimportant_keywords">Unimportant Keywords: </string>
+    <string name="title_activity_send_mail">SendMailActivity</string>
 </resources>

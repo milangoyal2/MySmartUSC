@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bruins.mysmartusc">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,14 +22,18 @@
         <activity
             android:name=".ImportantSettingsActivity"
             android:label="@string/title_activity_important_settings"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UnimSettingsActivity"
             android:label="UnimSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FiltersOverviewActivity"
             android:label="FiltersOverviewActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SendMailActivity"
+            android:label="@string/title_activity_send_mail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
