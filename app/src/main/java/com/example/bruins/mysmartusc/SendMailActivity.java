@@ -58,7 +58,7 @@ public class SendMailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Notification.Builder nb = mNotificationUtils.getAndroidChannelNotification("Hi", "There");
                 mNotificationUtils.getManager().notify(101, nb.build());
-                
+
 //                String title = editTextTitleAndroid.getText().toString();
 //                String author = editTextAuthorAndroid.getText().toString();
 //
