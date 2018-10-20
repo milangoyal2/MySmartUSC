@@ -59,29 +59,16 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
         Properties props = new Properties();
         //Configuring properties for gmail
         //If you are not using gmail you may need to change the values
-//        props.put("mail.smtp.host", "smtp.gmail.com");
-//        props.put("mail.smtp.socketFactory.port", "465");
-//        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.port", "465");
 
-        props.put("mail.pop3.host", "pop.gmail.com");
-        props.put("mail.pop3.port", "995");
-        props.put("mail.pop3.starttls.enable", "true");
+          props.put("mail.store.protocol", "imaps");
 
         //Creating a new session
-        Session session = Session.getDefaultInstance(props,
-                new javax.mail.Authenticator() {
-                    //Authenticating the password
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("mysmartusctest@gmail.com", "mysmartusctest5*");
-                    }
-                });
+        Session session = Session.getDefaultInstance(props,null);
         try {
 
             //retrieve email
-            Store store = session.getStore("pop3s");
-            String host = "pop.gmail.com";
+            Store store = session.getStore("imaps");
+            String host = "imap.googlemail.com";
             String user = "mysmartusctest@gmail.com";//usc email address
             String password = "mysmartusctest5*";//FOR USC: 16 character app password from google app passwords generator
             store.connect(host, user, password);
@@ -104,20 +91,6 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
                 System.out.println("Text: " + message.getContent().toString());
             }
 
-
-
-//            //Creating MimeMessage object
-//            MimeMessage mm = new MimeMessage(session);
-//            //Setting sender address
-//            mm.setFrom(new InternetAddress("mysmartusctest@gmail.com"));
-//            //Adding receiver
-//            mm.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-//            //Adding subject
-//            mm.setSubject(subject);
-//            //Adding message
-//            mm.setText(message);
-//            //Sending email
-//            Transport.send(mm);
         }catch (NoSuchProviderException e) {
         e.printStackTrace();
         } catch (MessagingException e) {
