@@ -31,6 +31,102 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
     //Progressdialog to show while sending email
     private ProgressDialog progressDialog;
     //Class Constructor
+
+    //retrieve email text from message object
+    private static String getTextFromMessage(Message message) throws MessagingException, IOException {
+        String result = "";
+        if (message.isMimeType("text/plain")) {
+            result = message.getContent().toString();
+        } else if (message.isMimeType("multipart/*")) {
+            MimeMultipart mimeMultipart = (MimeMultipart) message.getContent();
+            result = getTextFromMimeMultipart(mimeMultipart);
+        }
+        return result;
+    }
+
+    //helps retrieve email text from message object
+    private static String getTextFromMimeMultipart(
+            MimeMultipart mimeMultipart)  throws MessagingException, IOException{
+        String result = "";
+        int count = mimeMultipart.getCount();
+        for (int i = 0; i < count; i++) {
+            BodyPart bodyPart = mimeMultipart.getBodyPart(i);
+            if (bodyPart.isMimeType("text/plain")) {
+                result = result + "\n" + bodyPart.getContent();
+                break; // without break same text appears twice in my tests
+            } else if (bodyPart.isMimeType("text/html")) {
+                String html = (String) bodyPart.getContent();
+                result = result + "\n" + org.jsoup.Jsoup.parse(html).text();
+            } else if (bodyPart.getContent() instanceof MimeMultipart){
+                result = result + getTextFromMimeMultipart((MimeMultipart)bodyPart.getContent());
+            }
+        }
+        return result;
+    }
+
+    //returns int based on filters
+    public int checkEmail(Message message, ArrayList<String> impSubKeywords,ArrayList<String> unimpSubKeywords,
+                          ArrayList<String> impContKeywords, ArrayList<String> unimpContKeywords, ArrayList<String> impEmails,
+                          ArrayList<String> unimpEmails) throws MessagingException, IOException {
+        //return 1 for important email
+        //return 2 for important word in subject line
+        //return 3 for important word in content
+        //return 0 for not important
+        //return -1 for no match
+
+        //imp emails
+        for(int i =0; i < impEmails.size(); i++)
+        {
+            if(InternetAddress.toString(message.getFrom()).contains(impEmails.get(i)))
+            {
+                return 1;
+            }
+        }
+        //unimp emails
+        for(int i =0; i < unimpEmails.size(); i++)
+        {
+            if(InternetAddress.toString(message.getFrom()).contains(unimpEmails.get(i)))
+            {
+                return -0;
+            }
+        }
+
+        //imp subject keywords
+        for(int i =0; i < impSubKeywords.size(); i++)
+        {
+            if(message.getSubject().contains(impSubKeywords.get(i)))
+            {
+                return 2;
+            }
+        }
+        //unimp subject keywords
+        for(int i =0; i < unimpSubKeywords.size(); i++)
+        {
+            if(message.getSubject().contains(unimpSubKeywords.get(i)))
+            {
+                return 0;
+            }
+        }
+
+        //imp cont keywords
+        for(int i =0; i < impContKeywords.size(); i++)
+        {
+            if(getTextFromMessage(message).contains(impContKeywords.get(i)))
+            {
+                return 3;
+            }
+        }
+        //unimp cont keywords
+        for(int i =0; i < unimpContKeywords.size(); i++)
+        {
+            if(getTextFromMessage(message).contains(unimpContKeywords.get(i)))
+            {
+                return 0;
+            }
+        }
+        return -1;
+    }
+
     public SendMailAsynTask(Context context, String email, String subject, String message) {
         //Initializing variables
         this.context = context;
@@ -77,20 +173,20 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
             Folder emailFolder = store.getFolder("INBOX");
             emailFolder.open(Folder.READ_ONLY);
 
-            // retrieve the messages from the folder in an array and print it
-            Message[] messages = emailFolder.getMessages();
-            System.out.println("messages.length---" + messages.length);
+            // retrieve the latest messages from the folder
+            int messageCount = emailFolder.getMessageCount();
+            Message messages = emailFolder.getMessage(messageCount);
 
-            // print emails
-            for (int i = 0, n = messages.length; i < n; i++) {
-                Message message = messages[i];
-                System.out.println("---------------------------------");
-                System.out.println("Email Number " + (i + 1));
-                System.out.println("Subject: " + message.getSubject());
-                System.out.println("From: " + message.getFrom()[0]);
-                System.out.println("Text: " + message.getContent().toString());
-            }
+            // print email
+            Message message = messages[i];
+            System.out.println("---------------------------------");
+            System.out.println("Email Number " + (i + 1));
+            System.out.println("Subject: " + message.getSubject());
+            System.out.println("From: " + message.getFrom()[0]);
+            System.out.println("Text: " + message.getContent().toString());
 
+            //getTextFromMessage(message, *ALL THE KEYWORD ARRAYS*) will return an int
+            //int will correspond to which filtered message
         }catch (NoSuchProviderException e) {
         e.printStackTrace();
         } catch (MessagingException e) {
