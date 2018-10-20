@@ -185,7 +185,7 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
             System.out.println("From: " + message.getFrom()[0]);
             System.out.println("Text: " + message.getContent().toString());
 
-            //getTextFromMessage(message, *ALL THE KEYWORD ARRAYS*) will return an int
+            //checkEmail(message, *ALL THE KEYWORD ARRAYS*) will return an int
             //int will correspond to which filtered message
         }catch (NoSuchProviderException e) {
         e.printStackTrace();
