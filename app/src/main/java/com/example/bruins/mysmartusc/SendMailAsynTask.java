@@ -5,6 +5,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.sun.mail.imap.IMAPFolder;
+import com.sun.mail.imap.IMAPStore;
+
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
@@ -36,6 +39,29 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
     private ProgressDialog progressDialog;
 
     //Class Constructor
+
+    //thread runner
+    public void startListening(IMAPFolder imapFolder) {
+        // We need to create a new thread to keep alive the connection
+        Thread t = new Thread(new KeepAliveRunnable(imapFolder), "IdleConnectionKeepAlive");
+
+        t.start();
+
+        while (!Thread.interrupted()) {
+            //Starting IDLE
+            try {
+                imapFolder.idle();
+            } catch (MessagingException e) {
+                //Messaging exception during IDLE
+                throw new RuntimeException(e);
+            }
+        }
+
+        // Shutdown keep alive thread
+        if (t.isAlive()) {
+            t.interrupt();
+        }
+    }
 
     //retrieve email text from message object
     private static String getTextFromMessage(Message message) throws MessagingException, IOException {
@@ -168,14 +194,17 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
         try {
 
             //retrieve email
-            Store store = session.getStore("imaps");
+            IMAPStore store = (IMAPStore) session.getStore("imaps");
             String host = "imap.googlemail.com";
             String user = "mysmartusctest@gmail.com";//usc email address
             String password = "mysmartusctest5*";//FOR USC: 16 character app password from google app passwords generator
             store.connect(host, user, password);
 
             // create the folder object and open it
-            Folder emailFolder = store.getFolder("INBOX");
+            IMAPFolder emailFolder = (IMAPFolder) store.getFolder("INBOX");
+
+            startListening(emailFolder);
+
             emailFolder.open(Folder.READ_ONLY);
 
             // retrieve the latest messages from the folder
