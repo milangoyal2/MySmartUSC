@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import org.jsoup.Jsoup;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -14,17 +16,11 @@ import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.mail.Store;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMultipart;
 
-import com.example.bruins.mysmartusc.EmailFilters;
-import com.example.bruins.mysmartusc.NotificationSender;
-import com.example.bruins.mysmartusc.NotificationUtils;
 
 /**
  * Created by ps205 on 3/1/17.
@@ -42,6 +38,7 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
     private EmailFilters mEmailFilters;
     //Progressdialog to show while sending email
     private ProgressDialog progressDialog;
+
     //Class Constructor
 
     //retrieve email text from message object
@@ -191,24 +188,23 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
             Message message = emailFolder.getMessage(messageCount);
 
             // print email
-            //Message message = message;
-            System.out.println("---------------------------------");
-            System.out.println("Email Number " + (1));
-            System.out.println("Subject: " + message.getSubject());
-            System.out.println("From: " + message.getFrom()[0]);
-            System.out.println("Text: " + message.getContent().toString());
+//            System.out.println("---------------------------------");
+//            System.out.println("Email Number " + (messageCount + 1));
+//            System.out.println("Subject: " + message.getSubject());
+//            System.out.println("From: " + message.getFrom()[0]);
+//            System.out.println("Text: " + message.getContent().toString());
 
             //checkEmail(message, *ALL THE KEYWORD ARRAYS*) will return an int
             //int will correspond to which filtered message
-            int notificationType = checkEmail(message, mEmailFilters.getImpSubwords(), mEmailFilters.getUnimpSubwords(),
-                    mEmailFilters.getImpKeywords(), mEmailFilters.getUnimpKeywords(), mEmailFilters.getImpEmails(), mEmailFilters.getUnimpEmails());
+            //int notificationType = checkEmail(message, mEmailFilters.getImpSubwords(), mEmailFilters.getUnimpSubwords(),
+                    //mEmailFilters.getImpKeywords(), mEmailFilters.getUnimpKeywords(), mEmailFilters.getImpEmails(), mEmailFilters.getUnimpEmails());
 
             NotificationUtils mNotificationUtils = new NotificationUtils(this.context);
 
             NotificationSender mySender = new NotificationSender(mNotificationUtils);
 
             // send notification
-            mySender.SendNotification(notificationType,"New Email",InternetAddress.toString(message.getFrom()));
+            mySender.SendNotification(1,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
 
 
         }catch (NoSuchProviderException e) {

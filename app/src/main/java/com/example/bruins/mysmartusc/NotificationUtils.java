@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Color;
+import android.support.v4.app.NotificationCompat;
 
 public class NotificationUtils extends ContextWrapper {
 
@@ -44,11 +45,12 @@ public class NotificationUtils extends ContextWrapper {
         return mManager;
     }
 
-    public Notification.Builder getAndroidChannelNotification(String title, String body) {
+    public Notification.Builder getAndroidChannelNotification(String title, String subject, String body) {
         return new Notification.Builder(getApplicationContext(), ANDROID_CHANNEL_ID)
                 .setContentTitle(title)
-                .setContentText(body)
+                .setContentText(subject)
                 .setSmallIcon(android.R.drawable.stat_notify_more)
+                .setStyle(new Notification.BigTextStyle().bigText(body))
                 .setAutoCancel(true);
     }
 }

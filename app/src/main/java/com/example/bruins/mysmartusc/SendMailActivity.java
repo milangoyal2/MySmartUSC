@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.bruins.mysmartusc.EmailFilters;
+
 import android.app.NotificationManager;
 import android.support.v4.app.NotificationCompat;
 import android.content.Context;
@@ -44,20 +46,10 @@ public class SendMailActivity extends AppCompatActivity {
                 String mRecipientMail = edittext_recipient_id.getText().toString();
                 String mSubject = edittext_subject.getText().toString();
                 String mMessage = edittext_message.getText().toString();
-                new SendMailAsynTask(SendMailActivity.this, mRecipientMail, mSubject, mMessage).execute();//call send mail  cunstructor asyntask by  sending perameter
-            }
-        });
 
-        btn_notification = findViewById(R.id.btn_notification);
+                EmailFilters myfilters = new EmailFilters();
 
-        //Notification Builder:
-        mNotificationUtils = new NotificationUtils(this);
-
-        btn_notification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Notification.Builder nb = mNotificationUtils.getAndroidChannelNotification("Hi", "There");
-                mNotificationUtils.getManager().notify(101, nb.build());
+                new SendMailAsynTask(SendMailActivity.this, mRecipientMail, mSubject, mMessage, myfilters).execute();//call send mail  cunstructor asyntask by  sending perameter
             }
         });
     }
