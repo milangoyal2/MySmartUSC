@@ -6,7 +6,31 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class EmailFilters implements Serializable {
-    private ArrayList<String> impKeywords, unimpKeywords, impEmails, unimpEmails;
+    private ArrayList<String> impKeywords;
+    private ArrayList<String> unimpKeywords;
+    private ArrayList<String> impEmails;
+    private ArrayList<String> unimpEmails;
+
+    private ArrayList<String> impSubwords;
+    private ArrayList<String> unimpSubwords;
+
+    public ArrayList<String> getUnimpSubwords() {
+        return unimpSubwords;
+    }
+
+    public void setUnimpSubwords(ArrayList<String> unimpSubwords) {
+        this.unimpSubwords = unimpSubwords;
+    }
+
+
+    public ArrayList<String> getImpSubwords() {
+        return impSubwords;
+    }
+
+    public void setImpSubwords(ArrayList<String> impSubwords) {
+        this.impSubwords = impSubwords;
+    }
+
 
     public ArrayList<String> getImpKeywords() {
         return impKeywords;

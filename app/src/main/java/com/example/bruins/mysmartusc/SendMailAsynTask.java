@@ -4,8 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -16,6 +20,11 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.Store;
+import javax.mail.internet.MimeMultipart;
+
+import com.example.bruins.mysmartusc.EmailFilters;
+import com.example.bruins.mysmartusc.NotificationSender;
+import com.example.bruins.mysmartusc.NotificationUtils;
 
 /**
  * Created by ps205 on 3/1/17.
@@ -28,6 +37,9 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
     private String email;
     private String subject;
     private String message;
+
+    // Email Filters Class
+    private EmailFilters mEmailFilters;
     //Progressdialog to show while sending email
     private ProgressDialog progressDialog;
     //Class Constructor
@@ -127,12 +139,13 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
         return -1;
     }
 
-    public SendMailAsynTask(Context context, String email, String subject, String message) {
+    public SendMailAsynTask(Context context, String email, String subject, String message, EmailFilters emailfilters) {
         //Initializing variables
         this.context = context;
         this.email = email;
         this.subject = subject;
         this.message = message;
+        this.mEmailFilters = emailfilters;
     }
     @Override
     protected void onPreExecute() {
@@ -175,18 +188,29 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
 
             // retrieve the latest messages from the folder
             int messageCount = emailFolder.getMessageCount();
-            Message messages = emailFolder.getMessage(messageCount);
+            Message message = emailFolder.getMessage(messageCount);
 
             // print email
-            Message message = messages[i];
+            //Message message = message;
             System.out.println("---------------------------------");
-            System.out.println("Email Number " + (i + 1));
+            System.out.println("Email Number " + (1));
             System.out.println("Subject: " + message.getSubject());
             System.out.println("From: " + message.getFrom()[0]);
             System.out.println("Text: " + message.getContent().toString());
 
             //checkEmail(message, *ALL THE KEYWORD ARRAYS*) will return an int
             //int will correspond to which filtered message
+            int notificationType = checkEmail(message, mEmailFilters.getImpSubwords(), mEmailFilters.getUnimpSubwords(),
+                    mEmailFilters.getImpKeywords(), mEmailFilters.getUnimpKeywords(), mEmailFilters.getImpEmails(), mEmailFilters.getUnimpEmails());
+
+            NotificationUtils mNotificationUtils = new NotificationUtils(this.context);
+
+            NotificationSender mySender = new NotificationSender(mNotificationUtils);
+
+            // send notification
+            mySender.SendNotification(notificationType,"New Email",InternetAddress.toString(message.getFrom()));
+
+
         }catch (NoSuchProviderException e) {
         e.printStackTrace();
         } catch (MessagingException e) {

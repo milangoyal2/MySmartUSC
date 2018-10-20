@@ -13,7 +13,7 @@ public class NotificationSender {
         mNotificationUtils = notificationUtils;
     }
 
-    public void SendNotification(String priority, String title, String body) {
+    public void SendNotification(int type, String title, String body) {
         Notification.Builder nb = mNotificationUtils.getAndroidChannelNotification(title, body);
         mNotificationUtils.getManager().notify(101, nb.build());
     }
