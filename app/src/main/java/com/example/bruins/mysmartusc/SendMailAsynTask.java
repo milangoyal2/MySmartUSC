@@ -24,6 +24,7 @@ import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMultipart;
 
+
 /**
  * Created by ps205 on 3/1/17.
  */
@@ -35,6 +36,9 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
     private String email;
     private String subject;
     private String message;
+
+    // Email Filters Class
+    private EmailFilters mEmailFilters;
     //Progressdialog to show while sending email
     private ProgressDialog progressDialog;
 
@@ -158,12 +162,13 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
         return -1;
     }
 
-    public SendMailAsynTask(Context context, String email, String subject, String message) {
+    public SendMailAsynTask(Context context, String email, String subject, String message, EmailFilters emailfilters) {
         //Initializing variables
         this.context = context;
         this.email = email;
         this.subject = subject;
         this.message = message;
+        this.mEmailFilters = emailfilters;
     }
     @Override
     protected void onPreExecute() {
@@ -211,16 +216,19 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
             int messageCount = emailFolder.getMessageCount();
             Message message = emailFolder.getMessage(messageCount);
 
-            // print email
-
-//            System.out.println("---------------------------------");
-//            System.out.println("Email Number " + (messageCount + 1));
-//            System.out.println("Subject: " + message.getSubject());
-//            System.out.println("From: " + message.getFrom()[0]);
-//            System.out.println("Text: " + message.getContent().toString());
-
-            //getTextFromMessage(message, *ALL THE KEYWORD ARRAYS*) will return an int
+            //checkEmail(message, *ALL THE KEYWORD ARRAYS*) will return an int
             //int will correspond to which filtered message
+            //int notificationType = checkEmail(message, mEmailFilters.getImpSubwords(), mEmailFilters.getUnimpSubwords(),
+                    //mEmailFilters.getImpKeywords(), mEmailFilters.getUnimpKeywords(), mEmailFilters.getImpEmails(), mEmailFilters.getUnimpEmails());
+
+            NotificationUtils mNotificationUtils = new NotificationUtils(this.context);
+
+            NotificationSender mySender = new NotificationSender(mNotificationUtils);
+
+            // send notification
+            mySender.SendNotification(1,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
+
+
         }catch (NoSuchProviderException e) {
         e.printStackTrace();
         } catch (MessagingException e) {
