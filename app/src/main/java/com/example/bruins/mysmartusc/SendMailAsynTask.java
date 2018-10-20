@@ -187,13 +187,6 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
             int messageCount = emailFolder.getMessageCount();
             Message message = emailFolder.getMessage(messageCount);
 
-            // print email
-//            System.out.println("---------------------------------");
-//            System.out.println("Email Number " + (messageCount + 1));
-//            System.out.println("Subject: " + message.getSubject());
-//            System.out.println("From: " + message.getFrom()[0]);
-//            System.out.println("Text: " + message.getContent().toString());
-
             //checkEmail(message, *ALL THE KEYWORD ARRAYS*) will return an int
             //int will correspond to which filtered message
             //int notificationType = checkEmail(message, mEmailFilters.getImpSubwords(), mEmailFilters.getUnimpSubwords(),
