@@ -4,18 +4,22 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import org.jsoup.Jsoup;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.mail.Store;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMultipart;
 
 /**
  * Created by ps205 on 3/1/17.
@@ -30,6 +34,7 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
     private String message;
     //Progressdialog to show while sending email
     private ProgressDialog progressDialog;
+
     //Class Constructor
 
     //retrieve email text from message object
@@ -175,15 +180,15 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
 
             // retrieve the latest messages from the folder
             int messageCount = emailFolder.getMessageCount();
-            Message messages = emailFolder.getMessage(messageCount);
+            Message message = emailFolder.getMessage(messageCount);
 
             // print email
-            Message message = messages[i];
-            System.out.println("---------------------------------");
-            System.out.println("Email Number " + (i + 1));
-            System.out.println("Subject: " + message.getSubject());
-            System.out.println("From: " + message.getFrom()[0]);
-            System.out.println("Text: " + message.getContent().toString());
+
+//            System.out.println("---------------------------------");
+//            System.out.println("Email Number " + (messageCount + 1));
+//            System.out.println("Subject: " + message.getSubject());
+//            System.out.println("From: " + message.getFrom()[0]);
+//            System.out.println("Text: " + message.getContent().toString());
 
             //getTextFromMessage(message, *ALL THE KEYWORD ARRAYS*) will return an int
             //int will correspond to which filtered message
