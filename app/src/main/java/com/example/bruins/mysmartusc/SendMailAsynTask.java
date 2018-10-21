@@ -54,7 +54,12 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
         while (!Thread.interrupted()) {
             //Starting IDLE
             try {
+                System.out.println("STARTING IDLED@@@@@@@@@@@@@@@@@@@@@");
+                int messageCount = imapFolder.getMessageCount();
+                Message message = imapFolder.getMessage(messageCount);
+                System.out.println(message.getSubject());
                 imapFolder.idle();
+                System.out.println("NEW EMAIL HAS BEEN RECEIVED@@@@@@@@@@@@@@@@@@@@@");
             } catch (MessagingException e) {
                 //Messaging exception during IDLE
                 throw new RuntimeException(e);
@@ -208,9 +213,13 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
             // create the folder object and open it
             IMAPFolder emailFolder = (IMAPFolder) store.getFolder("INBOX");
 
-            startListening(emailFolder);
-
             emailFolder.open(Folder.READ_ONLY);
+            //startListening(emailFolder);
+            //Can't actually start a service like this (needs to be done from activity)
+            ServiceClass service = new ServiceClass(emailFolder);
+            service.onStartCommand(null, 0, 1);
+
+
 
             // retrieve the latest messages from the folder
             int messageCount = emailFolder.getMessageCount();

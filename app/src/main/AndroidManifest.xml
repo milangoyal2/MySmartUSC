@@ -36,5 +36,7 @@
             android:label="@string/title_activity_send_mail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
+    <service
+        android:name="com.example.bruins.mysmartusc"
+        android:process=":externalProcess" />
 </manifest>
