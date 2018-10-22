@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class SpecChangeSettingsActivity extends AppCompatActivity {
+public class ChangeUniEmailsSettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_spec_settings_layout);
+        setContentView(R.layout.change_unimemails_settings_layout);
 
         final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
 
@@ -61,7 +61,7 @@ public class SpecChangeSettingsActivity extends AppCompatActivity {
         unimEmailHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent overview = new Intent(SpecChangeSettingsActivity.this, FiltersOverviewActivity.class).putExtra("filters", filters);
+                Intent overview = new Intent(ChangeUniEmailsSettingsActivity.this, FiltersOverviewActivity.class).putExtra("filters", filters);
                 startActivity(overview);
 
             }

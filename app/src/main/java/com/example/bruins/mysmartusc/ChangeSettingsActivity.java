@@ -27,7 +27,7 @@ public class ChangeSettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, SpecChangeSettingsActivity.class).putExtra("filters", filters);
+                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, ChangeUniEmailsSettingsActivity.class).putExtra("filters", filters);
                 startActivity(changeSpecSettingsIntent);
             }
         });
@@ -37,7 +37,7 @@ public class ChangeSettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, SpecChangeSettingsActivity.class).putExtra("filters", filters);
+                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, ChangeUniEmailsSettingsActivity.class).putExtra("filters", filters);
                 startActivity(changeSpecSettingsIntent);
             }
         });
@@ -47,7 +47,7 @@ public class ChangeSettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, SpecChangeSettingsActivity.class).putExtra("filters", filters);
+                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, ChangeImpEmailsSettingsActivity.class).putExtra("filters", filters);
                 startActivity(changeSpecSettingsIntent);
             }
         });
@@ -57,7 +57,7 @@ public class ChangeSettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, SpecChangeSettingsActivity.class).putExtra("filters", filters);
+                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, ChangeImpKeywordsSettingsActivity.class).putExtra("filters", filters);
                 startActivity(changeSpecSettingsIntent);
             }
         });

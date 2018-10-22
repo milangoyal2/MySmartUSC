@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class ImportantSettingsActivity extends AppCompatActivity {
 
     Button b1;
-    EditText imp_emails, imp_keywords, imp_subwords;
+    EditText imp_emails, imp_keywords, imp_subwords, imp_flagwords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class ImportantSettingsActivity extends AppCompatActivity {
         imp_emails = (EditText)findViewById(R.id.editText);
         imp_keywords = (EditText)findViewById(R.id.editText2);
         imp_subwords = (EditText)findViewById(R.id.editText3);
+        imp_flagwords = (EditText)findViewById(R.id.editText4);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +39,7 @@ public class ImportantSettingsActivity extends AppCompatActivity {
                 String string_emails = imp_emails.getText().toString();
                 String string_keywords = imp_keywords.getText().toString();
                 String string_subwords = imp_subwords.getText().toString();
+                String flagwords = imp_flagwords.getText().toString();
 
                 if(!string_emails.isEmpty() &&
                         !string_keywords.isEmpty()) {
@@ -53,10 +55,13 @@ public class ImportantSettingsActivity extends AppCompatActivity {
                             (Arrays.asList(string_keywords.split("\\s*,\\s*")));
                     ArrayList<String> content_list = new ArrayList<String>
                             (Arrays.asList(string_subwords.split("\\s*,\\s*")));
+                    ArrayList<String> flagwords_list = new ArrayList<String>
+                            (Arrays.asList(flagwords.split("\\s*,\\s*")));
 
                     filters.setImpEmails(emails_list);
                     filters.setImpKeywords(content_list);
                     filters.setImpSubwords(subject_list);
+                    filters.setFlagwords(flagwords_list);
 
                     //sets global EmailFilters variable
                     Globals g = Globals.getInstance();
@@ -65,8 +70,8 @@ public class ImportantSettingsActivity extends AppCompatActivity {
                     // move to next layout:
                     Toast.makeText(getApplicationContext(),
                             "Redirecting...",Toast.LENGTH_SHORT).show();
-                    Intent unimSettingsIntent = new Intent(ImportantSettingsActivity.this, UnimSettingsActivity.class).putExtra("filters", filters);
-                    startActivity(unimSettingsIntent);
+                    Intent HomepageIntent = new Intent(ImportantSettingsActivity.this, HomePageActivity.class);
+                    startActivity(HomepageIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Fields can't be empty",Toast.LENGTH_SHORT).show();
                 }
