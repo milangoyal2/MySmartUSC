@@ -10,10 +10,12 @@ public class Globals {
     // Global variable
     private IMAPStore store;
     private ServiceClass service;
+    private EmailFilters filters;
     // Restrict the constructor from being instantiated
     private Globals(){
         store = null;
         service = null;
+        filters = null;
     }
 
     public void setStore(IMAPStore s){
@@ -27,6 +29,12 @@ public class Globals {
     }
     public ServiceClass getService(){
         return service;
+    }
+    public EmailFilters getFilters() {
+        return filters;
+    }
+    public void setFilters(EmailFilters filters) {
+        this.filters = filters;
     }
 
     public static synchronized Globals getInstance(){
