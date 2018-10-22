@@ -71,6 +71,14 @@ public class IdleRunnable implements Runnable {
 
         t.start();
 
+        SearchTerm today = new ReceivedDateTerm(ComparisonTerm.GT,new GregorianCalendar().getTime());
+        try {
+            Message msgs[] = folder.search(today);
+            lastMessage = msgs.length;
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
         while (!Thread.interrupted()) {
             //Starting IDLE
             try {
