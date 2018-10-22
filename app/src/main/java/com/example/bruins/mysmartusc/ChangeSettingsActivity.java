@@ -32,6 +32,36 @@ public class ChangeSettingsActivity extends AppCompatActivity {
             }
         });
 
+        unimportantKeywordsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, SpecChangeSettingsActivity.class).putExtra("filters", filters);
+                startActivity(changeSpecSettingsIntent);
+            }
+        });
+
+        importantEmailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, SpecChangeSettingsActivity.class).putExtra("filters", filters);
+                startActivity(changeSpecSettingsIntent);
+            }
+        });
+
+        importantKeywordsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, SpecChangeSettingsActivity.class).putExtra("filters", filters);
+                startActivity(changeSpecSettingsIntent);
+            }
+        });
+
 
     }
 }
