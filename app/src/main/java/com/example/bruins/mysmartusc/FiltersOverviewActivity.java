@@ -1,17 +1,7 @@
 package com.example.bruins.mysmartusc;
-import com.example.bruins.mysmartusc.EmailFilters;
-
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class FiltersOverviewActivity extends AppCompatActivity {
@@ -75,5 +65,6 @@ public class FiltersOverviewActivity extends AppCompatActivity {
 
             unimp_keywords.setText(unimp_keywords_str);
         }
+        System.out.println("Resting something"); 
     }
 }
