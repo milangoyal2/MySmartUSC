@@ -28,7 +28,18 @@
         <activity
             android:name=".FiltersOverviewActivity"
             android:label="FiltersOverviewActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ChangeSettingsActivity"
+            android:label="ChangeSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".SpecChangeSettingsActivity"
+            android:label="SpecChangeSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
