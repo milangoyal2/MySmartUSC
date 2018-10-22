@@ -13,3 +13,7 @@ Steps to run our application
     iii. Once in /apppasswords, click add device > other, set name to mysmartusc
     iv. Click generate, and copy 16-character password to safe location
     v. Login in using email address and custom (generated) password
+
+Notes:
+
+Notifications may take up to 5 minutes to appear (from time email was sent)
