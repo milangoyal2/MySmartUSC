@@ -127,7 +127,7 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
         {
             if(InternetAddress.toString(message.getFrom()).contains(unimpEmails.get(i)))
             {
-                return -0;
+                return 0;
             }
         }
 
