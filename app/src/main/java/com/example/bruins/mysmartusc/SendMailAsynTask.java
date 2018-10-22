@@ -216,7 +216,14 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
             emailFolder.open(Folder.READ_ONLY);
             //startListening(emailFolder);
             //Can't actually start a service like this (needs to be done from activity)
-            ServiceClass service = new ServiceClass(emailFolder);
+
+            // Calls the IdleRunnable Thread:
+            // Create a notification builder:
+            NotificationUtils mNotificationUtils = new NotificationUtils(this.context);
+            NotificationSender mySender = new NotificationSender(mNotificationUtils);
+
+
+            ServiceClass service = new ServiceClass(emailFolder, mySender);
             service.onStartCommand(null, 0, 1);
 
 
@@ -230,12 +237,8 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
             //int notificationType = checkEmail(message, mEmailFilters.getImpSubwords(), mEmailFilters.getUnimpSubwords(),
                     //mEmailFilters.getImpKeywords(), mEmailFilters.getUnimpKeywords(), mEmailFilters.getImpEmails(), mEmailFilters.getUnimpEmails());
 
-            NotificationUtils mNotificationUtils = new NotificationUtils(this.context);
-
-            NotificationSender mySender = new NotificationSender(mNotificationUtils);
-
             // send notification
-            mySender.SendNotification(1,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
+//            mySender.SendNotification(1,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
 
 
         }catch (NoSuchProviderException e) {
