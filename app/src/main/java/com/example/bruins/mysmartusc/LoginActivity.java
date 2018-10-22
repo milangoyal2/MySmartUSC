@@ -12,11 +12,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.bruins.mysmartusc.EmailFilters;
+import com.sun.mail.imap.IMAPStore;
+
+import java.util.Properties;
+
+import javax.mail.NoSuchProviderException;
+import javax.mail.Session;
 
 public class LoginActivity extends AppCompatActivity {
 
     Button b1;
-    EditText ed1,ed2;
+    EditText ed1, ed2;
 
 
     @Override
@@ -30,24 +36,47 @@ public class LoginActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ed1.getText().toString().equals("admin") &&
-                        ed2.getText().toString().equals("admin")) {
-                    Toast.makeText(getApplicationContext(),
-                            "Redirecting...",Toast.LENGTH_SHORT).show();
+                //Creating properties
+                Properties props = new Properties();
+                //Configuring properties for gmail
+                props.put("mail.store.protocol", "imaps");
 
-                    // Create filters class:
-                    EmailFilters myFilters = new EmailFilters();
+                String user = ed1.getText().toString(); //usc email address
+                String password = ed2.getText().toString(); //FOR USC: 16 character app password from google app passwords generator
 
-                    // move to next layout:
-                    Intent intent = new Intent(LoginActivity.this, ImportantSettingsActivity.class);
 
-                    //Pass filters:
-                    intent.putExtra("filters", myFilters);
+                //Creating a new session
+                Session session = Session.getDefaultInstance(props, null);
+                try {
 
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
+                    //retrieve email
+                    IMAPStore store = (IMAPStore) session.getStore("imaps");
+                    String host = "imap.googlemail.com";
+
+                    try {
+                        store.connect(host, user, password);
+                        Globals g = Globals.getInstance();
+                        g.setStore(store);
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(),
+                                "Incorrect E-Mail/Password", Toast.LENGTH_SHORT).show();
+                        //System.out.println("INCORRECT PASSWORD");
+                        return;
+                    }
+                } catch (NoSuchProviderException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+
+                // move to next layout:
+                Intent intent = new Intent(LoginActivity.this, ImportantSettingsActivity.class);
+
+                //Pass filters:
+                //intent.putExtra("filters", myFilters);
+                Toast.makeText(getApplicationContext(),
+                        "Redirecting...", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
             }
         });
     }

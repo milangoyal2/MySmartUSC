@@ -1,27 +1,30 @@
 package com.example.bruins.mysmartusc;
-import com.example.bruins.mysmartusc.EmailFilters;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
+
+
 
 
 public class FiltersOverviewActivity extends AppCompatActivity {
 
     TextView imp_emails, imp_keywords, unimp_emails, unimp_keywords;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filters_overview);
+
+        Button SettingsButton = (Button)findViewById(R.id.settingsbutton);
 
         imp_emails = findViewById(R.id.textView6);
         imp_keywords = findViewById(R.id.textView7);
@@ -75,5 +78,15 @@ public class FiltersOverviewActivity extends AppCompatActivity {
 
             unimp_keywords.setText(unimp_keywords_str);
         }
+        System.out.println("Resting something");
+        SettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Resting something");
+                EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+                Intent changeSettingsIntent = new Intent(FiltersOverviewActivity.this, ChangeSettingsActivity.class).putExtra("filters", filters);
+                startActivity(changeSettingsIntent);
+            }
+        });
     }
 }
