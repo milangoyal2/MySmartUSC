@@ -14,8 +14,16 @@ public class NotificationSender {
     }
 
     public void SendNotification(int type, String title, String subject, String body) {
-        Notification.Builder nb = mNotificationUtils.getAndroidChannelNotification(title, subject, body);
-        mNotificationUtils.getManager().notify(101, nb.build());
+        if (type == 1) {
+            Notification.Builder nb = mNotificationUtils.getImportantChannelNotification(title, subject, body);
+            mNotificationUtils.getManager().notify(101, nb.build());
+        }
+
+        else if (type == 2) {
+            Notification.Builder nb = mNotificationUtils.getUnimportantChannelNotification(title, subject, body);
+            mNotificationUtils.getManager().notify(101, nb.build());
+        }
+
     }
 
 }

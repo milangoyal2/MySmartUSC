@@ -13,10 +13,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent sendMailActivity = new Intent(this, SendMailActivity.class);
-        startActivity(sendMailActivity);
-//        Intent loginIntent = new Intent(this, LoginActivity.class);
-//        startActivity(loginIntent);
+//        Intent sendMailActivity = new Intent(this, SendMailActivity.class);
+//        startActivity(sendMailActivity);
+        Intent loginIntent = new Intent(this, LoginActivity.class);
+        startActivity(loginIntent);
 
     }
 

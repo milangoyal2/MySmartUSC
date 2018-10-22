@@ -51,6 +51,11 @@
             android:name=".ChangeImpKeywordsSettingsActivity"
             android:label="ChangeImpKeywordsSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".HomePageActivity"
+            android:label="StartListeningActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
     <service
         android:name="com.example.bruins.mysmartusc"

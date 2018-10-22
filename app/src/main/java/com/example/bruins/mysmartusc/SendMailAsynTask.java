@@ -127,7 +127,7 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
         {
             if(InternetAddress.toString(message.getFrom()).contains(unimpEmails.get(i)))
             {
-                return -0;
+                return 0;
             }
         }
 
@@ -219,7 +219,7 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
             // create the folder object and open it
             IMAPFolder emailFolder = (IMAPFolder) store.getFolder("INBOX");
 
-            emailFolder.open(Folder.READ_ONLY);
+            emailFolder.open(Folder.READ_WRITE);
             //startListening(emailFolder);
             //Can't actually start a service like this (needs to be done from activity)
 

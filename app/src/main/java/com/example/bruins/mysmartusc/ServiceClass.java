@@ -35,6 +35,7 @@ public class ServiceClass extends Service {
     public void onDestroy() {
         t.interrupt();
         t = null;
+        Globals.getInstance().setService(null);
         super.onDestroy();
     }
 

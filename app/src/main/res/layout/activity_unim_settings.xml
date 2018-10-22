@@ -45,7 +45,7 @@
 
 
     <EditText
-        android:id="@+id/keywords"
+        android:id="@+id/contwords"
         android:layout_width="346dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emails"
@@ -56,11 +56,29 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="22dp"
         android:ems="10"
-        android:hint="Unimportant Email Keywords"
+        android:hint="Unimportant Content Keywords"
         android:textColorHint="#ffff299f"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emails" />
+s
+    <EditText
+        android:id="@+id/subwords"
+        android:layout_width="346dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contwords"
+        android:layout_alignEnd="@+id/contwords"
+        android:layout_alignRight="@+id/contwords"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="22dp"
+        android:ems="10"
+        android:hint="Unimportant Subject Keywords"
+        android:textColorHint="#ffff299f"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contwords" />
 
 
     <Button

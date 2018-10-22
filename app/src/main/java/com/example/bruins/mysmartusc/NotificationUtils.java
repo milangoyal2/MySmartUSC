@@ -14,6 +14,7 @@ public class NotificationUtils extends ContextWrapper {
     public static final String ANDROID_CHANNEL_ID = "com.chikeandroid.tutsplustalerts.ANDROID";
 
     public static final String ANDROID_CHANNEL_NAME = "ANDROID CHANNEL";
+    public static final String UNIMPORTANT_CHANNEL_NAME = "UNIMPORTANT CHANNEL";
 
 
     public NotificationUtils(Context base) {
@@ -32,10 +33,24 @@ public class NotificationUtils extends ContextWrapper {
         androidChannel.enableVibration(true);
         // Sets the notification light color for notifications posted to this channel
         androidChannel.setLightColor(Color.GREEN);
+
+        androidChannel.setShowBadge(false);
+
+        androidChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
         // Sets whether notifications posted to this channel appear on the lockscreen or not
         androidChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 
         getManager().createNotificationChannel(androidChannel);
+
+
+        //
+        NotificationChannel unimportantChannel = new NotificationChannel(ANDROID_CHANNEL_ID,
+                UNIMPORTANT_CHANNEL_NAME, NotificationManager.IMPORTANCE_LOW);
+        unimportantChannel.setShowBadge(true);
+
+        getManager().createNotificationChannel(unimportantChannel);
+
+
     }
 
     public NotificationManager getManager() {
@@ -45,7 +60,7 @@ public class NotificationUtils extends ContextWrapper {
         return mManager;
     }
 
-    public Notification.Builder getAndroidChannelNotification(String title, String subject, String body) {
+    public Notification.Builder getImportantChannelNotification(String title, String subject, String body) {
         return new Notification.Builder(getApplicationContext(), ANDROID_CHANNEL_ID)
                 .setContentTitle(title)
                 .setContentText(subject)
@@ -53,4 +68,10 @@ public class NotificationUtils extends ContextWrapper {
                 .setStyle(new Notification.BigTextStyle().bigText(body))
                 .setAutoCancel(true);
     }
+
+    public Notification.Builder getUnimportantChannelNotification(String title, String subject, String body) {
+        return new Notification.Builder(getApplicationContext(), ANDROID_CHANNEL_ID);
+    }
+
+
 }

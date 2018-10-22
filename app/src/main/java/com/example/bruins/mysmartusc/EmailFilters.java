@@ -10,7 +10,6 @@ public class EmailFilters implements Serializable {
     private ArrayList<String> unimpKeywords;
     private ArrayList<String> impEmails;
     private ArrayList<String> unimpEmails;
-
     private ArrayList<String> impSubwords;
     private ArrayList<String> unimpSubwords;
 
