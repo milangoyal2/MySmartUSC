@@ -14,12 +14,16 @@ import java.util.Arrays;
 
 
 public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
-    @Override
+
+    Globals g = Globals.getInstance();
+    EmailFilters filters = g.getFilters();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_impemails_settings_layout);
 
-        final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+
+        //final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
 
         TextView imp_emails = findViewById(R.id.textView10);
 
@@ -42,7 +46,7 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final TextInputEditText impEmails = (TextInputEditText) findViewById(R.id.changeImpEmailsInput);
+                TextInputEditText impEmails = (TextInputEditText) findViewById(R.id.changeImpEmailsInput);
                 String impEmails_string = impEmails.getText().toString();
                 System.out.println(impEmails_string);
 
@@ -52,6 +56,7 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
                         System.out.println("this is a word in emails list: " + emails_list.get(i));
                     }
                     filters.setImpEmails(emails_list);
+                    g.setFilters(filters);
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter replacement emails if you'd like to make a change", Toast.LENGTH_SHORT).show();
                 }
@@ -62,7 +67,7 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
        impEmailHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent overview = new Intent(ChangeImpEmailsSettingsActivity.this, FiltersOverviewActivity.class).putExtra("filters", filters);
+                Intent overview = new Intent(ChangeImpEmailsSettingsActivity.this, HomePageActivity.class).putExtra("filters", filters);
                 startActivity(overview);
             }
         });

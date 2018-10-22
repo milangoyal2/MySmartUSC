@@ -22,25 +22,25 @@ public class ChangeSettingsActivity extends AppCompatActivity {
         Button importantEmailsButton = (Button)findViewById(R.id.changeImpEmailsButton);
         Button importantKeywordsButton = (Button)findViewById(R.id.changeImpKeywordsButton);
 
-        unimportantEmailsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        unimportantEmailsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+//                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, ChangeUniEmailsSettingsActivity.class).putExtra("filters", filters);
+//                startActivity(changeSpecSettingsIntent);
+//            }
+//        });
 
-                EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, ChangeUniEmailsSettingsActivity.class).putExtra("filters", filters);
-                startActivity(changeSpecSettingsIntent);
-            }
-        });
-
-        unimportantKeywordsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, ChangeUniEmailsSettingsActivity.class).putExtra("filters", filters);
-                startActivity(changeSpecSettingsIntent);
-            }
-        });
+//        unimportantKeywordsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+//                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, ChangeUniEmailsSettingsActivity.class).putExtra("filters", filters);
+//                startActivity(changeSpecSettingsIntent);
+//            }
+//        });
 
         importantEmailsButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -14,12 +14,15 @@ import java.util.Arrays;
 
 
 public class ChangeImpKeywordsSettingsActivity extends AppCompatActivity {
-    @Override
+
+    Globals g = Globals.getInstance();
+    EmailFilters filters = g.getFilters();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_impkeywords_settings_layout);
 
-        final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+        //final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
 
         TextView imp_keywords = findViewById(R.id.textView16);
 
@@ -52,6 +55,7 @@ public class ChangeImpKeywordsSettingsActivity extends AppCompatActivity {
                         System.out.println("this is a word in keywords list: " + keywords_list.get(i));
                     }
                     filters.setImpKeywords(keywords_list);
+                    g.setFilters(filters);
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter replacement keywords if you'd like to make a change", Toast.LENGTH_SHORT).show();
                 }
@@ -62,7 +66,7 @@ public class ChangeImpKeywordsSettingsActivity extends AppCompatActivity {
         impKeywordsHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent overview = new Intent(ChangeImpKeywordsSettingsActivity.this, FiltersOverviewActivity.class).putExtra("filters", filters);
+                Intent overview = new Intent(ChangeImpKeywordsSettingsActivity.this, HomePageActivity.class).putExtra("filters", filters);
                 startActivity(overview);
             }
         });
