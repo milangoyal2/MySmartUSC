@@ -6,4 +6,6 @@
     <string name="unimportant_emails">Unimportant Emails: </string>
     <string name="unimportant_keywords">Unimportant Keywords: </string>
     <string name="title_activity_send_mail">SendMailActivity</string>
+    <string name="title_activity_change_imp_emails_settings">ChangeImpEmailsSettingsActivity
+    </string>
 </resources>
