@@ -66,9 +66,9 @@ public class IdleRunnable implements Runnable {
     }
 
     //returns int based on filters
-    public int checkEmail(Message message, ArrayList<String> impSubKeywords,
-                          ArrayList<String> impContKeywords, ArrayList<String> impEmails,
-                          ArrayList<String> flagWords) throws MessagingException, IOException {
+    public int checkEmail(Message message) throws MessagingException, IOException {
+
+
         //return 1 for important email
         //return 2 for important word in subject line
         //return 3 for important word in content
@@ -77,6 +77,11 @@ public class IdleRunnable implements Runnable {
         boolean found = false;
         boolean flags = false;
 
+        EmailFilters mEmailFilters = Globals.getInstance().getFilters();
+        ArrayList<String> impSubKeywords = mEmailFilters.getImpSubwords();
+        ArrayList<String> impContKeywords = mEmailFilters.getImpKeywords();
+        ArrayList<String> impEmails = mEmailFilters.getImpEmails();
+        ArrayList<String> flagWords = mEmailFilters.getFlagwords();
 
         //imp emails
         for(int i =0; i < impEmails.size(); i++)
@@ -158,7 +163,7 @@ public class IdleRunnable implements Runnable {
 
                     System.out.println("lastMessage:" + lastMessage + " size:" + size);
 
-                    EmailFilters mEmailFilters = Globals.getInstance().getFilters();
+
 
 
                     //loop over all incoming emails that might have arrived:
@@ -169,8 +174,7 @@ public class IdleRunnable implements Runnable {
                         int notificationType = 0;
                         // Parse message and send notification:
                         try {
-                            notificationType = checkEmail(message, mEmailFilters.getImpSubwords(),
-                            mEmailFilters.getImpKeywords(), mEmailFilters.getImpEmails(), mEmailFilters.getFlagwords());
+                            notificationType = checkEmail(message);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

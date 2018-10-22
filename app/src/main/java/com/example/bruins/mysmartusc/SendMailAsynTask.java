@@ -108,10 +108,10 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
     public int checkEmail(Message message, ArrayList<String> impSubKeywords,ArrayList<String> unimpSubKeywords,
                           ArrayList<String> impContKeywords, ArrayList<String> unimpContKeywords, ArrayList<String> impEmails,
                           ArrayList<String> unimpEmails) throws MessagingException, IOException {
-        //return 1 for important email
+        //return 1 for important email address
         //return 2 for important word in subject line
         //return 3 for important word in content
-        //return 0 for not important
+        //return 0 for favorited
         //return -1 for no match
 
         //imp emails
