@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 
 import android.widget.Button;
@@ -33,6 +35,12 @@ public class LoginActivity extends AppCompatActivity {
         ed1 = findViewById(R.id.editText);
         ed2 = findViewById(R.id.editText2);
 
+        TextView textView =(TextView)findViewById(R.id.textView11);
+        textView.setClickable(true);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
+        String text = "Note: If your google account has 2 Step Authorization, <a href='https://myaccount.google.com/apppasswords'>click here</a> to make an app password for this device. Use generated 16 character password in the field above";
+        textView.setText(Html.fromHtml(text));
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 //
                 String user = ed1.getText().toString(); //usc email address
                 String password = ed2.getText().toString(); //FOR USC: 16 character app password from google app passwords generator
-//
+
 //
 //                //Creating a new session
 //                Session session = Session.getDefaultInstance(props, null);
