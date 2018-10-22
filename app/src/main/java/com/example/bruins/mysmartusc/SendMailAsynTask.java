@@ -207,8 +207,14 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
             IMAPStore store = (IMAPStore) session.getStore("imaps");
             String host = "imap.googlemail.com";
             String user = "mysmartusctest@gmail.com";//usc email address
-            String password = "mysmartusctest5*";//FOR USC: 16 character app password from google app passwords generator
-            store.connect(host, user, password);
+            String password = "msmartusctest5*";//FOR USC: 16 character app password from google app passwords generator
+
+            try {
+                store.connect(host, user, password);
+            } catch (Exception e) {
+                System.out.println("INCORRECT PASSWORD");
+                return null;
+            }
 
             // create the folder object and open it
             IMAPFolder emailFolder = (IMAPFolder) store.getFolder("INBOX");
