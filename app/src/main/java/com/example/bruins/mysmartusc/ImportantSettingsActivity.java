@@ -43,9 +43,9 @@ public class ImportantSettingsActivity extends AppCompatActivity {
                         !string_keywords.isEmpty()) {
                     // Parse text and populate filters class:
 
-                    EmailFilters filters;
+                    EmailFilters filters = new EmailFilters();
 
-                    filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+                    //filters = (EmailFilters) getIntent().getSerializableExtra("filters");
 
                     ArrayList<String> emails_list = new ArrayList<String>
                             (Arrays.asList(string_emails.split("\\s*,\\s*")));
