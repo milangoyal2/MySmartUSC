@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.bruins.mysmartusc">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,14 +15,13 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".ImportantSettingsActivity"
-            android:label="@string/title_activity_important_settings"
+            android:label="ImportantSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UnimSettingsActivity"
@@ -33,20 +33,27 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SendMailActivity"
-            android:label="@string/title_activity_send_mail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_send_mail" />
+
         <activity
             android:name=".ChangeSettingsActivity"
             android:label="ChangeSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".SpecChangeSettingsActivity"
-            android:label="SpecChangeSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:name=".ChangeUniEmailsSettingsActivity"
+            android:label="ChangeUniEmailsSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ChangeImpEmailsSettingsActivity"
+            android:label="ChangeImpEmailsSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ChangeImpKeywordsSettingsActivity"
+            android:label="ChangeImpKeywordsSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
     <service
         android:name="com.example.bruins.mysmartusc"
-        android:process=":externalProcess" />
+        android:process=":externalProcess"
+        tools:ignore="WrongManifestParent" />
 </manifest>
