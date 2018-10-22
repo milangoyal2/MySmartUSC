@@ -62,7 +62,7 @@ public class ImportantSettingsActivity extends AppCompatActivity {
                     filters.setImpKeywords(content_list);
                     filters.setImpSubwords(subject_list);
                     filters.setFlagwords(flagwords_list);
-                    
+
                     //sets global EmailFilters variable
                     Globals g = Globals.getInstance();
                     g.setFilters(filters);
@@ -70,7 +70,7 @@ public class ImportantSettingsActivity extends AppCompatActivity {
                     // move to next layout:
                     Toast.makeText(getApplicationContext(),
                             "Redirecting...",Toast.LENGTH_SHORT).show();
-                    Intent HomepageIntent = new Intent(ImportantSettingsActivity.this, HomePageActivity.class).putExtra("filters", filters);
+                    Intent HomepageIntent = new Intent(ImportantSettingsActivity.this, HomePageActivity.class);
                     startActivity(HomepageIntent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Fields can't be empty",Toast.LENGTH_SHORT).show();
