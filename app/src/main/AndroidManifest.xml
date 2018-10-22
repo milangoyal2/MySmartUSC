@@ -20,26 +20,27 @@
         <activity
             android:name=".ImportantSettingsActivity"
             android:label="@string/title_activity_important_settings"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UnimSettingsActivity"
             android:label="UnimSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FiltersOverviewActivity"
             android:label="FiltersOverviewActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ChangeSettingsActivity"
             android:label="ChangeSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".SpecChangeSettingsActivity"
             android:label="SpecChangeSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ChangeImpEmailsSettingsActivity"
+            android:label="@string/title_activity_change_imp_emails_settings"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
