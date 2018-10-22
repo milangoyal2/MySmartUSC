@@ -15,7 +15,7 @@ public class Globals {
     private Globals(){
         store = null;
         service = null;
-        filters = null;
+        filters = new EmailFilters();
     }
 
     public void setStore(IMAPStore s){
