@@ -20,7 +20,7 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start_listening);
 
         startButton = findViewById(R.id.button2);
         stopButton = findViewById(R.id.button3);
@@ -34,18 +34,19 @@ public class HomePageActivity extends AppCompatActivity {
                 if (Globals.getInstance().getService() != null) {
                     Globals.getInstance().getService().onDestroy();
                 }
-                NotificationUtils mNotificationUtils = new NotificationUtils(HomePageActivity.this);
-                NotificationSender mySender = new NotificationSender(mNotificationUtils);
-                Store store = Globals.getInstance().getStore();
-                try {
-                    IMAPFolder emailFolder = (IMAPFolder) store.getFolder("INBOX");
-                    emailFolder.open(Folder.READ_WRITE);
-                    ServiceClass service = new ServiceClass(emailFolder, mySender);
-                    Globals.getInstance().setService(service);
-                    service.onStartCommand(null, 0, 1);
-                } catch (javax.mail.MessagingException e) {
-                    e.printStackTrace();
-                }
+//                NotificationUtils mNotificationUtils = new NotificationUtils(HomePageActivity.this);
+//                NotificationSender mySender = new NotificationSender(mNotificationUtils);
+//                Store store = Globals.getInstance().getStore();
+//                try {
+//                    IMAPFolder emailFolder = (IMAPFolder) store.getFolder("INBOX");
+//                    emailFolder.open(Folder.READ_WRITE);
+//                    ServiceClass service = new ServiceClass(emailFolder, mySender);
+//                    Globals.getInstance().setService(service);
+//                    service.onStartCommand(null, 0, 1);
+//                } catch (javax.mail.MessagingException e) {
+//                    e.printStackTrace();
+//                }
+                new StartServiceAsyncTask(HomePageActivity.this).execute();
             }
         });
 

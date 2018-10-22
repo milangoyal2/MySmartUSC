@@ -46,7 +46,7 @@ public class LoginAsyncTask extends AsyncTask<Void, Void, Void> {
             currContext.startActivity(intent);
         } else {
             Toast.makeText(currContext,
-                "Redirecting...", Toast.LENGTH_SHORT).show();
+                "Incorrect Email/Password...", Toast.LENGTH_SHORT).show();
 
         }
         //Pass filters:
