@@ -16,4 +16,4 @@ Steps to run our application
 
 Notes:
 
-Notifications may take up to 5 minutes to appear (from time email was sent)
+Notifications should appear within 5 minutes, but can take up to 10 minutes, since the time the origianl email was sent.
