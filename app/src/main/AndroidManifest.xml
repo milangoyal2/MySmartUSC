@@ -34,12 +34,16 @@
             android:label="ChangeSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".SpecChangeSettingsActivity"
-            android:label="SpecChangeSettingsActivity"
+            android:name=".ChangeUniEmailsSettingsActivity"
+            android:label="ChangeUniEmailsSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ChangeImpEmailsSettingsActivity"
             android:label="@string/title_activity_change_imp_emails_settings"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ChangeImpKeywordsSettingsActivity"
+            android:label="ChangeImpKeywordsSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
