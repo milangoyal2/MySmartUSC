@@ -5,6 +5,7 @@ import com.example.bruins.mysmartusc.NotificationSender;
 import com.sun.mail.imap.IMAPFolder;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 import javax.mail.BodyPart;
@@ -64,6 +65,66 @@ public class IdleRunnable implements Runnable {
         lastMessage = 0;
     }
 
+    //returns int based on filters
+    public int checkEmail(Message message, ArrayList<String> impSubKeywords,
+                          ArrayList<String> impContKeywords, ArrayList<String> impEmails,
+                          ArrayList<String> flagWords) throws MessagingException, IOException {
+        //return 1 for important email
+        //return 2 for important word in subject line
+        //return 3 for important word in content
+        //return 0 for not important
+        //return -1 for no match
+        boolean found = false;
+        boolean flags = false;
+
+
+        //imp emails
+        for(int i =0; i < impEmails.size(); i++)
+        {
+            if(InternetAddress.toString(message.getFrom()).contains(impEmails.get(i)))
+            {
+                found = true;
+            }
+        }
+
+
+        //imp subject keywords
+        for(int i =0; i < impSubKeywords.size(); i++)
+        {
+            if(message.getSubject().contains(impSubKeywords.get(i)))
+            {
+                found = true;
+            }
+        }
+
+
+        //imp cont keywords
+        for(int i =0; i < impContKeywords.size(); i++)
+        {
+            if(getTextFromMessage(message).contains(impContKeywords.get(i)))
+            {
+                found = true;
+            }
+        }
+
+        //imp flag keywords
+        for(int i =0; i < flagWords.size(); i++)
+        {
+            if(getTextFromMessage(message).contains(flagWords.get(i))) {
+                found = true;
+                flags = true;
+            }
+        }
+
+        if (found) {
+            if (flags) {
+                return 2;
+            }
+            return 1;
+        }
+        return -1;
+    }
+
     @Override
     public void run(){
         // We need to create a new thread to keep alive the connection
@@ -97,14 +158,25 @@ public class IdleRunnable implements Runnable {
 
                     System.out.println("lastMessage:" + lastMessage + " size:" + size);
 
+                    EmailFilters mEmailFilters = Globals.getInstance().getFilters();
+
+
                     //loop over all incoming emails that might have arrived:
                     for (int i = lastMessage; i < size; i++) {
                         Message message = msgs[i];
                         System.out.println(message.getSubject());
 
+                        int notificationType = 0;
                         // Parse message and send notification:
                         try {
-                            notificationSender.SendNotification(1,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
+                            notificationType = checkEmail(message, mEmailFilters.getImpSubwords(),
+                            mEmailFilters.getImpKeywords(), mEmailFilters.getImpEmails(), mEmailFilters.getFlagwords());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            notificationSender.SendNotification(notificationType,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
