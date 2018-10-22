@@ -45,6 +45,11 @@
             android:label="SpecChangeSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".StartListeningActivity"
+            android:label="StartListeningActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
     <service
         android:name="com.example.bruins.mysmartusc"
