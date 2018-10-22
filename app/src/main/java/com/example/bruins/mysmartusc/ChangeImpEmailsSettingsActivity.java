@@ -25,7 +25,7 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
 
         //final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
 
-        TextView imp_emails = findViewById(R.id.textView10);
+        TextView imp_emails = findViewById(R.id.textView14);
 
         //displays the current unimportant emails.
         String imp_emails_str = "";

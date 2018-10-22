@@ -13,7 +13,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Change the current unimportant emails below, seperated by commas"
+        android:text="Change the current important subject/content keywords for fav/flagged emails below, separated by commas"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.376" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textView12"
         android:layout_width="373dp"
         android:layout_height="56dp"
         android:layout_marginStart="8dp"
@@ -42,7 +42,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Below are your current selected unimportant email addresses"
+        android:text="Below are your current selected important favorited or flagged subject/content keywords."
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/changeUnimEmailsInput"
+            android:id="@+id/changeFavFlagInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="..."
@@ -71,7 +71,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <Button
-        android:id="@+id/changeUnimEmailsSetButton"
+        android:id="@+id/changeFavFlagSetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -87,7 +87,7 @@
         app:layout_constraintVertical_bias="0.668" />
 
     <Button
-        android:id="@+id/unimEmailHomeButton"
+        android:id="@+id/favFlagHomeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
