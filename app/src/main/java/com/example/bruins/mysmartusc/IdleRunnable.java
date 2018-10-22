@@ -85,14 +85,21 @@ public class IdleRunnable implements Runnable {
                 int size = msgs.length;
                 if (size != lastMessage) {
                     System.out.println("NEW EMAIL HAS BEEN RECEIVED@@@@@@@@@@@@@@@@@@@@@");
-                    System.out.println(msgs[size-1].getSubject());
 
-                    Message message = msgs[size-1];
-                    // Parse message and send notification:
-                    try {
-                        notificationSender.SendNotification(1,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
-                    } catch (IOException e) {
-                        e.printStackTrace();
+
+                    System.out.println("lastMessage:" + lastMessage + " size:" + size);
+
+                    //loop over all incoming emails that might have arrived:
+                    for (int i = lastMessage; i < size; i++) {
+                        Message message = msgs[i];
+                        System.out.println(message.getSubject());
+
+                        // Parse message and send notification:
+                        try {
+                            notificationSender.SendNotification(1,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     lastMessage = size;

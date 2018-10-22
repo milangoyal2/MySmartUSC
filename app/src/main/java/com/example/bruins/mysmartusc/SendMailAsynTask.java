@@ -238,7 +238,7 @@ public class SendMailAsynTask extends AsyncTask<Void, Void, Void> {
                     //mEmailFilters.getImpKeywords(), mEmailFilters.getUnimpKeywords(), mEmailFilters.getImpEmails(), mEmailFilters.getUnimpEmails());
 
             // send notification
-//            mySender.SendNotification(1,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
+            mySender.SendNotification(1,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
 
 
         }catch (NoSuchProviderException e) {
