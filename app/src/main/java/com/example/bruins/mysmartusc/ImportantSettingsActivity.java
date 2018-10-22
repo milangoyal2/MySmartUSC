@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class ImportantSettingsActivity extends AppCompatActivity {
 
     Button b1;
-    EditText imp_emails, imp_keywords;
+    EditText imp_emails, imp_keywords, imp_subwords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,29 +30,41 @@ public class ImportantSettingsActivity extends AppCompatActivity {
         b1 = (Button)findViewById(R.id.button);
         imp_emails = (EditText)findViewById(R.id.editText);
         imp_keywords = (EditText)findViewById(R.id.editText2);
+        imp_subwords = (EditText)findViewById(R.id.editText3);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String string_emails = imp_emails.getText().toString();
                 String string_keywords = imp_keywords.getText().toString();
+                String string_subwords = imp_subwords.getText().toString();
 
                 if(!string_emails.isEmpty() &&
                         !string_keywords.isEmpty()) {
-                    Toast.makeText(getApplicationContext(),
-                            "Redirecting...",Toast.LENGTH_SHORT).show();
                     // Parse text and populate filters class:
-                    EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
+
+                    EmailFilters filters;
+
+                    filters = (EmailFilters) getIntent().getSerializableExtra("filters");
 
                     ArrayList<String> emails_list = new ArrayList<String>
                             (Arrays.asList(string_emails.split("\\s*,\\s*")));
-                    ArrayList<String> keywords_list = new ArrayList<String>
+                    ArrayList<String> subject_list = new ArrayList<String>
                             (Arrays.asList(string_keywords.split("\\s*,\\s*")));
+                    ArrayList<String> content_list = new ArrayList<String>
+                            (Arrays.asList(string_subwords.split("\\s*,\\s*")));
 
                     filters.setImpEmails(emails_list);
-                    filters.setImpKeywords(keywords_list);
+                    filters.setImpKeywords(content_list);
+                    filters.setImpSubwords(subject_list);
+
+                    //sets global EmailFilters variable
+                    Globals g = Globals.getInstance();
+                    g.setFilters(filters);
 
                     // move to next layout:
+                    Toast.makeText(getApplicationContext(),
+                            "Redirecting...",Toast.LENGTH_SHORT).show();
                     Intent unimSettingsIntent = new Intent(ImportantSettingsActivity.this, UnimSettingsActivity.class).putExtra("filters", filters);
                     startActivity(unimSettingsIntent);
                 } else {
