@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 import javax.mail.BodyPart;
+import javax.mail.Flags;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -125,11 +126,22 @@ public class IdleRunnable implements Runnable {
 
         if (found) {
             if (flags) {
+                // Mark as favorite
+                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.FLAGGED), true);
+                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), false);
                 return 2;
+
+
             }
+            folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), false);
             return 1;
+
         }
+        // Mark as read:
+        folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), true);
+
         return -1;
+
     }
 
     @Override
