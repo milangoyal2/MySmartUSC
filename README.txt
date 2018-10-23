@@ -2,7 +2,7 @@ README.txt - MySmartUSC
 
 Steps to run our application
 
-1. Import complete project to Android Studio
+1. Import complete project to Android Studio (version 3.0 or newer required)
 2. Run app (Run > Run... > app > Select Device)
 3. Connect physical device or create new virtual device
 4. Make sure that device runs API Level 28 or later
@@ -16,4 +16,15 @@ Steps to run our application
 
 Notes:
 
-Notifications should appear within 5 minutes, but can take up to 10 minutes, since the time the origianl email was sent.
+Notifications:
+-Notifications should appear within 5 minutes, but can take up to 10 minutes, since the time the origianl email was sent.
+-Notifications will only be given for emails that have been sent after the application has started.
+
+
+Important keywords and Emails:
+-Entry for each keyword and email type is case sensitive.
+-To view each keyword and email field, go to where the keywords and emails are changed (press the settings button, then change __ button).
+-Emails with new keywords will only display after changing the keywords thru settings button.
+   (In other words, previously sent emails with new keywords will not trigger a notification)
+
+

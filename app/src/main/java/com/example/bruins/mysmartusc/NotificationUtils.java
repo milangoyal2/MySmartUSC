@@ -6,7 +6,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Color;
-import android.support.v4.app.NotificationCompat;
 
 public class NotificationUtils extends ContextWrapper {
 
@@ -70,7 +69,8 @@ public class NotificationUtils extends ContextWrapper {
     }
 
     public Notification.Builder getUnimportantChannelNotification(String title, String subject, String body) {
-        return new Notification.Builder(getApplicationContext(), ANDROID_CHANNEL_ID);
+        return new Notification.Builder(getApplicationContext(), ANDROID_CHANNEL_ID)
+                .setSmallIcon(android.R.drawable.stat_notify_more);
     }
 
 

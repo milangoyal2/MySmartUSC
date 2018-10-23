@@ -40,10 +40,6 @@
             android:label="ChangeSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".ChangeUniEmailsSettingsActivity"
-            android:label="ChangeUniEmailsSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
             android:name=".ChangeImpEmailsSettingsActivity"
             android:label="ChangeImpEmailsSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
@@ -56,6 +52,17 @@
             android:label="StartListeningActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".ChangeImpSubwordsActivity"
+            android:label="ChangeImpSubwordsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ChangeFavFlagSettingsActivity"
+            android:label="ChangeFavFlagSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
     </application>
     <service
         android:name="com.example.bruins.mysmartusc"

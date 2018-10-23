@@ -1,7 +1,5 @@
 package com.example.bruins.mysmartusc;
 
-import com.example.bruins.mysmartusc.NotificationSender;
-
 import com.sun.mail.imap.IMAPFolder;
 
 import java.io.IOException;
@@ -86,6 +84,10 @@ public class IdleRunnable implements Runnable {
         //imp emails
         for(int i =0; i < impEmails.size(); i++)
         {
+
+            System.out.println("This is important emaails: " + impEmails.get(i));
+            System.out.println("This is important email addresses: " + InternetAddress.toString(message.getFrom()));
+
             if(InternetAddress.toString(message.getFrom()).contains(impEmails.get(i)))
             {
                 found = true;
@@ -180,6 +182,8 @@ public class IdleRunnable implements Runnable {
                         }
 
                         try {
+                            System.out.println("Notification type: " + notificationType);
+
                             notificationSender.SendNotification(notificationType,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
                         } catch (IOException e) {
                             e.printStackTrace();

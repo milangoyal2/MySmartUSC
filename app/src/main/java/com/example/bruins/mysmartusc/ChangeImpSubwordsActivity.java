@@ -55,7 +55,7 @@ public class ChangeImpSubwordsActivity extends AppCompatActivity {
                     for (int i = 0; i < imp_subwords_list.size(); i++){
                         System.out.println("this is a word in important subwords list: " + imp_subwords_list.get(i));
                     }
-                    filters.setFlagwords(imp_subwords_list);
+                    filters.setImpSubwords(imp_subwords_list);
                     g.setFilters(filters);
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter replacement subject keywords if you'd like to make a change", Toast.LENGTH_SHORT).show();
