@@ -22,8 +22,6 @@ public class ChangeImpKeywordsSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_impkeywords_settings_layout);
 
-        //final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-
         TextView imp_keywords = findViewById(R.id.textView16);
 
         //displays the current unimportant keywords.
@@ -59,6 +57,18 @@ public class ChangeImpKeywordsSettingsActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter replacement keywords if you'd like to make a change", Toast.LENGTH_SHORT).show();
                 }
+                TextView imp_keywords = findViewById(R.id.textView16);
+
+                String imp_keywords_str = "";
+                for (int i = 0; i < filters.getImpKeywords().size(); i++) {
+
+                    if (i == filters.getImpKeywords().size() - 1) {
+                        imp_keywords_str += filters.getImpKeywords().get(i);
+                    } else {
+                        imp_keywords_str += filters.getImpKeywords().get(i) + ", ";
+                    }
+                }
+                imp_keywords.setText(imp_keywords_str);
             }
         });
 
