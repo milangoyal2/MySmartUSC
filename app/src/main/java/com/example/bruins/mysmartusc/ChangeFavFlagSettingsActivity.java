@@ -22,9 +22,6 @@ public class ChangeFavFlagSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_favflag_settings_layout);
 
-
-        //final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-
         TextView fav_flags = findViewById(R.id.textView12);
 
         //displays the current unimportant emails.

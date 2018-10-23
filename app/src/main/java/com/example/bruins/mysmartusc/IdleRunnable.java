@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 import javax.mail.BodyPart;
+import javax.mail.Flags;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -66,12 +67,6 @@ public class IdleRunnable implements Runnable {
     //returns int based on filters
     public int checkEmail(Message message) throws MessagingException, IOException {
 
-
-        //return 1 for important email
-        //return 2 for important word in subject line
-        //return 3 for important word in content
-        //return 0 for not important
-        //return -1 for no match
         boolean found = false;
         boolean flags = false;
 
@@ -84,11 +79,10 @@ public class IdleRunnable implements Runnable {
         //imp emails
         for(int i =0; i < impEmails.size(); i++)
         {
+            System.out.println("This is important emails: " + impEmails.get(i));
+            System.out.println("This is important email addresses: " + InternetAddress.toString(message.getFrom()));
 
-            System.out.println("This is current impEmails " + impEmails.get(i));
-            System.out.println("This is important internet addresses: " + InternetAddress.toString(message.getFrom()));
-
-            if(InternetAddress.toString(message.getFrom()).contains(impEmails.get(i)))
+            if(InternetAddress.toString(message.getFrom()).toLowerCase().contains(impEmails.get(i).toLowerCase()))
             {
                 found = true;
             }
@@ -98,7 +92,7 @@ public class IdleRunnable implements Runnable {
         //imp subject keywords
         for(int i =0; i < impSubKeywords.size(); i++)
         {
-            if(message.getSubject().contains(impSubKeywords.get(i)))
+            if(message.getSubject().toLowerCase().contains(impSubKeywords.get(i).toLowerCase()))
             {
                 found = true;
             }
@@ -108,7 +102,7 @@ public class IdleRunnable implements Runnable {
         //imp cont keywords
         for(int i =0; i < impContKeywords.size(); i++)
         {
-            if(getTextFromMessage(message).contains(impContKeywords.get(i)))
+            if(getTextFromMessage(message).toLowerCase().contains(impContKeywords.get(i).toLowerCase()))
             {
                 found = true;
             }
@@ -117,7 +111,10 @@ public class IdleRunnable implements Runnable {
         //imp flag keywords
         for(int i =0; i < flagWords.size(); i++)
         {
-            if(getTextFromMessage(message).contains(flagWords.get(i))) {
+            if(getTextFromMessage(message).toLowerCase().contains(flagWords.get(i).toLowerCase())) {
+                found = true;
+                flags = true;
+            }else if(message.getSubject().toLowerCase().contains(flagWords.get(i).toLowerCase())) {
                 found = true;
                 flags = true;
             }
@@ -125,10 +122,16 @@ public class IdleRunnable implements Runnable {
 
         if (found) {
             if (flags) {
+                // Mark as favorite
+                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.FLAGGED), true);
+                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), false);
                 return 2;
             }
+            folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), false);
             return 1;
         }
+        // Mark as read:
+        folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), true);
         return -1;
     }
 
@@ -162,11 +165,7 @@ public class IdleRunnable implements Runnable {
                 if (size != lastMessage) {
                     System.out.println("NEW EMAIL HAS BEEN RECEIVED@@@@@@@@@@@@@@@@@@@@@");
 
-
                     System.out.println("lastMessage:" + lastMessage + " size:" + size);
-
-
-
 
                     //loop over all incoming emails that might have arrived:
                     for (int i = lastMessage; i < size; i++) {

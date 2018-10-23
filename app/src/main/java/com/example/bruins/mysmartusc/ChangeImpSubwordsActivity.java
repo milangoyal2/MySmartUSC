@@ -22,9 +22,6 @@ public class ChangeImpSubwordsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_impsubwords_settings_layout);
 
-
-        //final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-
         TextView imp_subwords = findViewById(R.id.textView20);
 
         //displays the current unimportant emails.

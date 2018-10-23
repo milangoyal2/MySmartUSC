@@ -22,9 +22,6 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_impemails_settings_layout);
 
-
-        //final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-
         TextView imp_emails = findViewById(R.id.textView14);
 
         //displays the current unimportant emails.
@@ -46,19 +43,14 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                TextInputEditText impEmails = (TextInputEditText) findViewById(R.id.changeImpEmailsInput);
-                String impEmails_string = impEmails.getText().toString();
-                System.out.println(impEmails_string);
+            TextInputEditText impEmails = (TextInputEditText) findViewById(R.id.changeImpEmailsInput);
+            String impEmails_string = impEmails.getText().toString();
+            System.out.println(impEmails_string);
 
-                if (impEmails_string.length() > 0) {
-                    ArrayList<String> emails_list = new ArrayList<String>(Arrays.asList(impEmails_string.split("\\s*,\\s*")));
-                    for (int i = 0; i < emails_list.size(); i++){
-                        System.out.println("this is a word in emails list: " + emails_list.get(i));
-                    }
-                    filters.setImpEmails(emails_list);
-                    g.setFilters(filters);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Please enter replacement emails if you'd like to make a change", Toast.LENGTH_SHORT).show();
+            if (impEmails_string.length() > 0) {
+                ArrayList<String> emails_list = new ArrayList<String>(Arrays.asList(impEmails_string.split("\\s*,\\s*")));
+                for (int i = 0; i < emails_list.size(); i++){
+                    System.out.println("this is a word in emails list: " + emails_list.get(i));
                 }
 
                 TextView imp_emails = findViewById(R.id.textView14);
@@ -73,18 +65,23 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
                     }
                 }
                 imp_emails.setText(imp_emails_str);
+
+                filters.setImpEmails(emails_list);
+                g.setFilters(filters);
+            } else {
+                Toast.makeText(getApplicationContext(), "Please enter replacement emails if you'd like to make a change", Toast.LENGTH_SHORT).show();
+            }
+
             }
         });
 
         Button impEmailHomeButton = (Button)findViewById(R.id.impEmailHomeButton);
-       impEmailHomeButton.setOnClickListener(new View.OnClickListener() {
+        impEmailHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent overview = new Intent(ChangeImpEmailsSettingsActivity.this, HomePageActivity.class).putExtra("filters", filters);
                 startActivity(overview);
             }
         });
-
     }
-
 };

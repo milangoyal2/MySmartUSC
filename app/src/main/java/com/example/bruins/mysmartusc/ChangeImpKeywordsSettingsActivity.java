@@ -22,8 +22,6 @@ public class ChangeImpKeywordsSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_impkeywords_settings_layout);
 
-        //final EmailFilters filters = (EmailFilters) getIntent().getSerializableExtra("filters");
-
         TextView imp_keywords = findViewById(R.id.textView16);
 
         //displays the current unimportant keywords.

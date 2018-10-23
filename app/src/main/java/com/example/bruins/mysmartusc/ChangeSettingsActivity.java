@@ -16,7 +16,6 @@ public class ChangeSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_settings_layout);
 
-
         Button favFlagButton = (Button)findViewById(R.id.changeFavFlagButton);
         Button importantSubwordsButton = (Button)findViewById(R.id.changeImpSubwordsButton);
         Button importantEmailsButton = (Button)findViewById(R.id.changeImpEmailsButton);

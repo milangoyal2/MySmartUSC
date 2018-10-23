@@ -42,11 +42,8 @@ public class ImportantSettingsActivity extends AppCompatActivity {
                 String flagwords = imp_flagwords.getText().toString();
                 
                 // Parse text and populate filters class:
-
                 Globals g = Globals.getInstance();
                 EmailFilters filters = g.getFilters();
-//                    EmailFilters filters;
-//                    filters = (EmailFilters) getIntent().getSerializableExtra("filters");
 
                 ArrayList<String> emails_list = new ArrayList<String>
                         (Arrays.asList(string_emails.split("\\s*,\\s*")));
