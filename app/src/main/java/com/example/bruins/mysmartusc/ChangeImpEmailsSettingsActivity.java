@@ -60,6 +60,19 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter replacement emails if you'd like to make a change", Toast.LENGTH_SHORT).show();
                 }
+
+                TextView imp_emails = findViewById(R.id.textView14);
+
+                String imp_emails_str = "";
+                for (int i = 0; i < filters.getImpEmails().size(); i++) {
+
+                    if (i == filters.getImpEmails().size() - 1) {
+                        imp_emails_str += filters.getImpEmails().get(i);
+                    } else {
+                        imp_emails_str += filters.getImpEmails().get(i) + ", ";
+                    }
+                }
+                imp_emails.setText(imp_emails_str);
             }
         });
 

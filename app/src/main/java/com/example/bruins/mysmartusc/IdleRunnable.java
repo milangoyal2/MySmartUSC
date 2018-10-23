@@ -85,8 +85,8 @@ public class IdleRunnable implements Runnable {
         for(int i =0; i < impEmails.size(); i++)
         {
 
-            System.out.println("This is important emaails: " + impEmails.get(i));
-            System.out.println("This is important email addresses: " + InternetAddress.toString(message.getFrom()));
+            System.out.println("This is current impEmails " + impEmails.get(i));
+            System.out.println("This is important internet addresses: " + InternetAddress.toString(message.getFrom()));
 
             if(InternetAddress.toString(message.getFrom()).contains(impEmails.get(i)))
             {
