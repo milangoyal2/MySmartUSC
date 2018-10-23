@@ -40,41 +40,36 @@ public class ImportantSettingsActivity extends AppCompatActivity {
                 String string_keywords = imp_keywords.getText().toString();
                 String string_subwords = imp_subwords.getText().toString();
                 String flagwords = imp_flagwords.getText().toString();
+                
+                // Parse text and populate filters class:
 
-                if(!string_emails.isEmpty() &&
-                        !string_keywords.isEmpty()) {
-                    // Parse text and populate filters class:
-
-                    Globals g = Globals.getInstance();
-                    EmailFilters filters = g.getFilters();
+                Globals g = Globals.getInstance();
+                EmailFilters filters = g.getFilters();
 //                    EmailFilters filters;
 //                    filters = (EmailFilters) getIntent().getSerializableExtra("filters");
 
-                    ArrayList<String> emails_list = new ArrayList<String>
-                            (Arrays.asList(string_emails.split("\\s*,\\s*")));
-                    ArrayList<String> subject_list = new ArrayList<String>
-                            (Arrays.asList(string_keywords.split("\\s*,\\s*")));
-                    ArrayList<String> content_list = new ArrayList<String>
-                            (Arrays.asList(string_subwords.split("\\s*,\\s*")));
-                    ArrayList<String> flagwords_list = new ArrayList<String>
-                            (Arrays.asList(flagwords.split("\\s*,\\s*")));
+                ArrayList<String> emails_list = new ArrayList<String>
+                        (Arrays.asList(string_emails.split("\\s*,\\s*")));
+                ArrayList<String> subject_list = new ArrayList<String>
+                        (Arrays.asList(string_keywords.split("\\s*,\\s*")));
+                ArrayList<String> content_list = new ArrayList<String>
+                        (Arrays.asList(string_subwords.split("\\s*,\\s*")));
+                ArrayList<String> flagwords_list = new ArrayList<String>
+                        (Arrays.asList(flagwords.split("\\s*,\\s*")));
 
-                    filters.setImpEmails(emails_list);
-                    filters.setImpKeywords(content_list);
-                    filters.setImpSubwords(subject_list);
-                    filters.setFlagwords(flagwords_list);
+                filters.setImpEmails(emails_list);
+                filters.setImpKeywords(content_list);
+                filters.setImpSubwords(subject_list);
+                filters.setFlagwords(flagwords_list);
 
-                    //sets global EmailFilters variable
-                    g.setFilters(filters);
+                //sets global EmailFilters variable
+                g.setFilters(filters);
 
-                    // move to next layout:
-                    Toast.makeText(getApplicationContext(),
-                            "Redirecting...",Toast.LENGTH_SHORT).show();
-                    Intent HomepageIntent = new Intent(ImportantSettingsActivity.this, HomePageActivity.class);
-                    startActivity(HomepageIntent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Fields can't be empty",Toast.LENGTH_SHORT).show();
-                }
+                // move to next layout:
+                Toast.makeText(getApplicationContext(),
+                        "Redirecting...",Toast.LENGTH_SHORT).show();
+                Intent HomepageIntent = new Intent(ImportantSettingsActivity.this, HomePageActivity.class);
+                startActivity(HomepageIntent);
             }
         });
 
