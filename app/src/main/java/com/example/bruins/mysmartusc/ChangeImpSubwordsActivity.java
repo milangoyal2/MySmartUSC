@@ -57,6 +57,19 @@ public class ChangeImpSubwordsActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter replacement subject keywords if you'd like to make a change", Toast.LENGTH_SHORT).show();
                 }
+
+                TextView imp_subwords = findViewById(R.id.textView20);
+
+                String imp_subwords_str = "";
+                for (int i = 0; i < filters.getImpSubwords().size(); i++) {
+
+                    if (i == filters.getImpSubwords().size() - 1) {
+                        imp_subwords_str += filters.getImpSubwords().get(i);
+                    } else {
+                        imp_subwords_str += filters.getImpSubwords().get(i) + ", ";
+                    }
+                }
+                imp_subwords.setText(imp_subwords_str);
             }
         });
 

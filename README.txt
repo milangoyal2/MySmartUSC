@@ -22,9 +22,7 @@ Notifications:
 
 
 Important keywords and Emails:
--Entry for each keyword and email type is case sensitive.
 -To view each keyword and email field, go to where the keywords and emails are changed (press the settings button, then change __ button).
--Emails with new keywords will only display after changing the keywords thru settings button.
-   (In other words, previously sent emails with new keywords will not trigger a notification)
-
+-Emails sent prior to keyword changes will not trigger a notification
+-Keywords will not be recognized as substrings (for example, entering the keyword "just" will not recognize an email containing the word justice)
 

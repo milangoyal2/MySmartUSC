@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Color;
+import android.support.v4.app.NotificationCompat;
 
 public class NotificationUtils extends ContextWrapper {
 
@@ -25,7 +26,7 @@ public class NotificationUtils extends ContextWrapper {
 
         // create android channel
         NotificationChannel androidChannel = new NotificationChannel(ANDROID_CHANNEL_ID,
-                ANDROID_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+                ANDROID_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
         // Sets whether notifications posted to this channel should display notification lights
         androidChannel.enableLights(true);
         // Sets whether notification posted to this channel should vibrate.
@@ -35,7 +36,6 @@ public class NotificationUtils extends ContextWrapper {
 
         androidChannel.setShowBadge(false);
 
-        androidChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
         // Sets whether notifications posted to this channel appear on the lockscreen or not
         androidChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
 
@@ -70,7 +70,9 @@ public class NotificationUtils extends ContextWrapper {
 
     public Notification.Builder getUnimportantChannelNotification(String title, String subject, String body) {
         return new Notification.Builder(getApplicationContext(), ANDROID_CHANNEL_ID)
-                .setSmallIcon(android.R.drawable.stat_notify_more);
+                .setSmallIcon(android.R.drawable.stat_notify_more)
+                .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
+                .setContentTitle("You got an email that was favorited");
     }
 
 

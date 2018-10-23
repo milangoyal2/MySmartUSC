@@ -57,6 +57,19 @@ public class ChangeFavFlagSettingsActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter replacement Fav/Flag keywords if you'd like to make a change", Toast.LENGTH_SHORT).show();
                 }
+
+                TextView fav_flags = findViewById(R.id.textView12);
+
+                String fav_flags_str = "";
+                for (int i = 0; i < filters.getFlagwords().size(); i++) {
+
+                    if (i == filters.getFlagwords().size() - 1) {
+                        fav_flags_str += filters.getFlagwords().get(i);
+                    } else {
+                        fav_flags_str += filters.getFlagwords().get(i) + ", ";
+                    }
+                }
+                fav_flags.setText(fav_flags_str);
             }
         });
 
