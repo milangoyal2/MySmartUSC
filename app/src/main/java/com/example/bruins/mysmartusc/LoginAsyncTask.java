@@ -49,9 +49,6 @@ public class LoginAsyncTask extends AsyncTask<Void, Void, Void> {
                 "Incorrect Email/Password...", Toast.LENGTH_SHORT).show();
 
         }
-        //Pass filters:
-        //intent.putExtra("filters", myFilters);
-
     }
 
     @Override
@@ -76,9 +73,6 @@ public class LoginAsyncTask extends AsyncTask<Void, Void, Void> {
 
                 success = true;
             } catch (Exception e) {
-//                Toast.makeText(currContext,
-//                        "Incorrect E-Mail/Password", Toast.LENGTH_SHORT).show();
-                //System.out.println("INCORRECT PASSWORD");
                 success = false;
                 return null;
             }
