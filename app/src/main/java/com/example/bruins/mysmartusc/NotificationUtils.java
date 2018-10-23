@@ -33,6 +33,7 @@ public class NotificationUtils extends ContextWrapper {
         androidChannel.enableVibration(true);
         // Sets the notification light color for notifications posted to this channel
         androidChannel.setLightColor(Color.GREEN);
+        androidChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
 
         androidChannel.setShowBadge(false);
 
