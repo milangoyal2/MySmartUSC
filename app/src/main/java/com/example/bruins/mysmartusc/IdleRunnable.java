@@ -197,6 +197,9 @@ public class IdleRunnable implements Runnable {
                             System.out.println("Notification type: " + notificationType);
 
                             notificationSender.SendNotification(notificationType,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
+                            if (notificationType == 1 || notificationType == 2) {
+                                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), false);
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
