@@ -123,15 +123,11 @@ public class IdleRunnable implements Runnable {
         if (found) {
             if (flags) {
                 // Mark as favorite
-                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.FLAGGED), true);
-                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), false);
                 return 2;
             }
-            folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), false);
             return 1;
         }
         // Mark as read:
-        folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), true);
         return -1;
     }
 
@@ -176,6 +172,14 @@ public class IdleRunnable implements Runnable {
                         // Parse message and send notification:
                         try {
                             notificationType = checkEmail(message);
+                            if (notificationType == 1) {
+                                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), false);
+                            } else if (notificationType == 2) {
+                                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.FLAGGED), true);
+                                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), false);
+                            } else if (notificationType == -1) {
+                                folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), true);
+                            }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
