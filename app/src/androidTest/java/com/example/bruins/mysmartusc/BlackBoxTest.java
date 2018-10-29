@@ -26,3 +26,5 @@ public class BlackBoxTest {
         onView(withId(R.id.editText)).perform(clearText(), typeText("Sample"));
     }
 }
+
+

@@ -1,7 +1,5 @@
 package com.example.bruins.mysmartusc;
 
-import com.example.bruins.mysmartusc.NotificationSender;
-
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -9,6 +7,7 @@ import android.os.IBinder;
 import com.sun.mail.imap.IMAPFolder;
 
 public class ServiceClass extends Service {
+
     private Thread t;
     private IMAPFolder folder;
     private NotificationSender notificationSender;
@@ -39,5 +38,5 @@ public class ServiceClass extends Service {
         super.onDestroy();
     }
 
-
 }
+
