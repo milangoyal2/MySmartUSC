@@ -30,19 +30,19 @@ public class ImportantSettingsActivityTest {
     @Test
     public void TestContentKeywords() {
         onView(withId(R.id.editText2)).check(matches((isDisplayed())));
-        onView(withId(R.id.editText)).perform(typeText("Hello")).check(matches(withText("Hello")));
+        onView(withId(R.id.editText2)).perform(typeText("Hello")).check(matches(withText("Hello")));
     }
 
     @Test
     public void TestSubjectKeywords() {
         onView(withId(R.id.editText3)).check(matches((isDisplayed())));
-        onView(withId(R.id.editText)).perform(typeText("Hello")).check(matches(withText("Hello")));
+        onView(withId(R.id.editText3)).perform(typeText("Hello")).check(matches(withText("Hello")));
     }
 
     @Test
     public void TestFavoriteKeywords() {
         onView(withId(R.id.editText4)).check(matches((isDisplayed())));
-        onView(withId(R.id.editText)).perform(typeText("Hello")).check(matches(withText("Hello")));
+        onView(withId(R.id.editText4)).perform(typeText("Hello")).check(matches(withText("Hello")));
     }
 
     @Test

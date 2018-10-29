@@ -53,7 +53,9 @@ public class HomePageActivity extends AppCompatActivity {
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Globals.getInstance().getService().onDestroy();
+                if (Globals.getInstance().getService() != null) {
+                    Globals.getInstance().getService().onDestroy();
+                }
             }
         });
 
