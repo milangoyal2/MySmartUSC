@@ -17,7 +17,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 
-public class ChangeSettingsTest1 {
+public class ChangeSettingsTest {
     @Rule
     public ActivityTestRule<ChangeSettingsActivity> mActivityTestRule = new ActivityTestRule<>(ChangeSettingsActivity.class);
 
