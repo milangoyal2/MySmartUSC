@@ -98,12 +98,12 @@ public class ParseEmailTest {
     }
 
     @Test
-    public void checkImportantEmail() throws IOException, MessagingException {
+    public void CheckImportantEmail() throws IOException, MessagingException {
         assertEquals(testObject.checkEmail(importantmessage), 1);
     }
 
     @Test
-    public void checkImportantSubject() throws IOException, MessagingException {
+    public void CheckImportantSubject() throws IOException, MessagingException {
         assertEquals(testObject.checkEmail(importantmessage), 1);
     }
 
