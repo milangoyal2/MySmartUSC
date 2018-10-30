@@ -39,7 +39,7 @@ public class ChangeSettingsTest {
 
         return currentActivity[0];
     }
-
+    
     @Rule
     public ActivityTestRule<ChangeSettingsActivity> mActivityTestRule = new ActivityTestRule<>(ChangeSettingsActivity.class);
 

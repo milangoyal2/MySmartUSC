@@ -43,12 +43,12 @@ public class ChangeSettingsTests {
     }
 
     @Test
-    public void checkCurrentEmailsSingleton() throws IOException {
+    public void CheckCurrentEmailsSingleton() throws IOException {
         String returnString = "test@test.com";
         assertEquals(emailsTestObject.getCurrent(), returnString);
     }
     @Test
-    public void checkCurrentEmails() throws IOException {
+    public void CheckCurrentEmails() throws IOException {
         ArrayList<String> emails = new ArrayList<String>();
         emails.add("test1@test.com");
         emails.add("test2@test.com");
@@ -61,12 +61,12 @@ public class ChangeSettingsTests {
     }
 
     @Test
-    public void checkCurrentSubwordsSingleton() throws IOException {
+    public void CheckCurrentSubwordsSingleton() throws IOException {
         String returnString = "foo";
         assertEquals(subwordsTestObject.getCurrent(), returnString);
     }
     @Test
-    public void checkCurrentSubwords() throws IOException {
+    public void CheckCurrentSubwords() throws IOException {
         ArrayList<String> subwords = new ArrayList<String>();
         subwords.add("foo1");
         subwords.add("foo2");
@@ -79,12 +79,12 @@ public class ChangeSettingsTests {
     }
 
     @Test
-    public void checkCurrentKeywordsSingleton() throws IOException {
+    public void CheckCurrentKeywordsSingleton() throws IOException {
         String returnString = "bar";
         assertEquals(keywordsTestObject.getCurrent(), returnString);
     }
     @Test
-    public void checkCurrentKeywords() throws IOException {
+    public void CheckCurrentKeywords() throws IOException {
         ArrayList<String> keywords = new ArrayList<String>();
         keywords.add("bar1");
         keywords.add("bar2");
@@ -97,12 +97,12 @@ public class ChangeSettingsTests {
     }
 
     @Test
-    public void checkCurrentFlagsSingleton() throws IOException {
+    public void CheckCurrentFlagsSingleton() throws IOException {
         String returnString = "flag";
         assertEquals(favflagTestObject.getCurrent(), returnString);
     }
     @Test
-    public void checkCurrentFlags() throws IOException {
+    public void CheckCurrentFlags() throws IOException {
         ArrayList<String> flags = new ArrayList<String>();
         flags.add("flag1");
         flags.add("flag2");
