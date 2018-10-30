@@ -18,13 +18,8 @@ public class ChangeImpKeywordsSettingsActivity extends AppCompatActivity {
     Globals g = Globals.getInstance();
     EmailFilters filters = g.getFilters();
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_impkeywords_settings_layout);
-
-        TextView imp_keywords = findViewById(R.id.textView16);
-
-        //displays the current unimportant keywords.
+    //returns the current important keywords
+    protected String getCurrent(){
         String imp_keywords_str = "";
         for (int i = 0; i < filters.getImpKeywords().size(); i++) {
 
@@ -34,9 +29,19 @@ public class ChangeImpKeywordsSettingsActivity extends AppCompatActivity {
                 imp_keywords_str += filters.getImpKeywords().get(i) + ", ";
             }
         }
-        imp_keywords.setText(imp_keywords_str);
+        return imp_keywords_str;
+    }
 
-        //for parsing the newly entered unimportant keywords
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.change_impkeywords_settings_layout);
+
+        TextView imp_keywords = findViewById(R.id.textView16);
+
+        //displays the current important keywords
+        imp_keywords.setText(getCurrent());
+
+        //for parsing the newly entered important keywords
         Button changeImpkeywordsSetButton = (Button)findViewById(R.id.impKeywordsSetButton);
         System.out.println(changeImpkeywordsSetButton);
         changeImpkeywordsSetButton.setOnClickListener(new View.OnClickListener() {

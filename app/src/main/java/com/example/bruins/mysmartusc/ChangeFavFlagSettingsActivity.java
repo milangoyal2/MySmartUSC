@@ -18,13 +18,8 @@ public class ChangeFavFlagSettingsActivity extends AppCompatActivity {
     Globals g = Globals.getInstance();
     EmailFilters filters = g.getFilters();
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_favflag_settings_layout);
-
-        TextView fav_flags = findViewById(R.id.textView12);
-
-        //displays the current unimportant emails.
+    //returns the current flagwords
+    protected String getCurrent(){
         String fav_flags_str = "";
         for (int i = 0; i < filters.getFlagwords().size(); i++) {
 
@@ -34,7 +29,17 @@ public class ChangeFavFlagSettingsActivity extends AppCompatActivity {
                 fav_flags_str += filters.getFlagwords().get(i) + ", ";
             }
         }
-        fav_flags.setText(fav_flags_str);
+        return fav_flags_str;
+    }
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.change_favflag_settings_layout);
+
+        TextView fav_flags = findViewById(R.id.textView12);
+
+        //displays the current flagwords
+        fav_flags.setText(getCurrent());
 
         //for parsing the newly entered unimportant emails
         Button changeFavFlagsSetButton = (Button)findViewById(R.id.changeFavFlagSetButton);

@@ -18,13 +18,7 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
     Globals g = Globals.getInstance();
     EmailFilters filters = g.getFilters();
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_impemails_settings_layout);
-
-        TextView imp_emails = findViewById(R.id.textView14);
-
-        //displays the current unimportant emails.
+    protected String getCurrent(){
         String imp_emails_str = "";
         for (int i = 0; i < filters.getImpEmails().size(); i++) {
 
@@ -34,7 +28,17 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
                 imp_emails_str += filters.getImpEmails().get(i) + ", ";
             }
         }
-        imp_emails.setText(imp_emails_str);
+        return imp_emails_str;
+    }
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.change_impemails_settings_layout);
+
+        TextView imp_emails = findViewById(R.id.textView14);
+
+        //displays the current important emails.
+        imp_emails.setText(getCurrent());
 
         //for parsing the newly entered unimportant emails
         Button changeImpEmailsSetButton = (Button)findViewById(R.id.impEmailsSetButton);

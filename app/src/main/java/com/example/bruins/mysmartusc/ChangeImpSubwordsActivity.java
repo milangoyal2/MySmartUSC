@@ -18,13 +18,8 @@ public class ChangeImpSubwordsActivity extends AppCompatActivity {
     Globals g = Globals.getInstance();
     EmailFilters filters = g.getFilters();
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_impsubwords_settings_layout);
-
-        TextView imp_subwords = findViewById(R.id.textView20);
-
-        //displays the current unimportant emails.
+    //returns the current important subwords
+    protected String getCurrent(){
         String imp_subwords_str = "";
         for (int i = 0; i < filters.getImpSubwords().size(); i++) {
 
@@ -34,7 +29,17 @@ public class ChangeImpSubwordsActivity extends AppCompatActivity {
                 imp_subwords_str += filters.getImpSubwords().get(i) + ", ";
             }
         }
-        imp_subwords.setText(imp_subwords_str);
+        return imp_subwords_str;
+    }
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.change_impsubwords_settings_layout);
+
+        TextView imp_subwords = findViewById(R.id.textView20);
+
+        //displays the current unimportant emails.
+        imp_subwords.setText(getCurrent());
 
         //for parsing the newly entered unimportant emails
         Button changeImpSubwordsSetButton = (Button)findViewById(R.id.changeImpSubwordsSetButton);
