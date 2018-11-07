@@ -42,42 +42,111 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
 
         //for parsing the newly entered unimportant emails
         Button changeImpEmailsSetButton = (Button)findViewById(R.id.impEmailsSetButton);
+
         System.out.println(changeImpEmailsSetButton);
         changeImpEmailsSetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TextInputEditText newInput = (TextInputEditText) findViewById(R.id.changeImpEmailsInput);
+                String newInputString = newInput.getText().toString();
 
-            TextInputEditText impEmails = (TextInputEditText) findViewById(R.id.changeImpEmailsInput);
-            String impEmails_string = impEmails.getText().toString();
-            System.out.println(impEmails_string);
-
-            if (impEmails_string.length() > 0) {
-                ArrayList<String> emails_list = new ArrayList<String>(Arrays.asList(impEmails_string.split("\\s*,\\s*")));
-                for (int i = 0; i < emails_list.size(); i++){
-                    System.out.println("this is a word in emails list: " + emails_list.get(i));
-                }
-
-                TextView imp_emails = findViewById(R.id.textView14);
-
-                String imp_emails_str = "";
-                for (int i = 0; i < filters.getImpEmails().size(); i++) {
-
-                    if (i == filters.getImpEmails().size() - 1) {
-                        imp_emails_str += filters.getImpEmails().get(i);
-                    } else {
-                        imp_emails_str += filters.getImpEmails().get(i) + ", ";
+                if (newInputString.length() > 0) {
+                    ArrayList<String> new_list = new ArrayList<String>(Arrays.asList(newInputString.split("\\s*,\\s*")));
+                    ArrayList<String> old_list = filters.getImpEmails();
+                    for (int i = 0; i < new_list.size(); i++) {
+                        if (!old_list.contains(new_list.get(i))) {
+                            old_list.add(new_list.get(i));
+                        }
                     }
-                }
-                imp_emails.setText(imp_emails_str);
 
-                filters.setImpEmails(emails_list);
-                g.setFilters(filters);
+                    filters.setImpEmails(old_list);
+
+                    TextView imp_emails = findViewById(R.id.textView14);
+
+                    String imp_emails_str = "";
+                    for (int i = 0; i < filters.getImpEmails().size(); i++) {
+
+                        if (i == filters.getImpEmails().size() - 1) {
+                            imp_emails_str += filters.getImpEmails().get(i);
+                        } else {
+                            imp_emails_str += filters.getImpEmails().get(i) + ", ";
+                        }
+                    }
+                    imp_emails.setText(imp_emails_str);
+                    g.setFilters(filters);
             } else {
                 Toast.makeText(getApplicationContext(), "Please enter replacement emails if you'd like to make a change", Toast.LENGTH_SHORT).show();
             }
 
             }
         });
+
+        Button deleteButton = (Button)findViewById(R.id.deleteButton);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextInputEditText newInput = (TextInputEditText) findViewById(R.id.changeImpEmailsInput);
+                String newInputString = newInput.getText().toString();
+
+                if (newInputString.length() > 0) {
+                    ArrayList<String> new_list = new ArrayList<String>(Arrays.asList(newInputString.split("\\s*,\\s*")));
+                    ArrayList<String> old_list = filters.getImpEmails();
+                    for (int i = 0; i < new_list.size(); i++) {
+                        if (old_list.contains(new_list.get(i))) {
+                            old_list.remove(new_list.get(i));
+                        }
+                    }
+
+                    filters.setImpEmails(old_list);
+
+                    TextView imp_emails = findViewById(R.id.textView14);
+
+                    String imp_emails_str = "";
+                    for (int i = 0; i < filters.getImpEmails().size(); i++) {
+
+                        if (i == filters.getImpEmails().size() - 1) {
+                            imp_emails_str += filters.getImpEmails().get(i);
+                        } else {
+                            imp_emails_str += filters.getImpEmails().get(i) + ", ";
+                        }
+                    }
+                    imp_emails.setText(imp_emails_str);
+                    g.setFilters(filters);
+                }
+
+            }
+        });
+
+        Button clearButton = (Button)findViewById(R.id.clearButton);
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextInputEditText newInput = (TextInputEditText) findViewById(R.id.changeImpEmailsInput);
+                String newInputString = newInput.getText().toString();
+
+                if (newInputString.length() > 0) {
+                    ArrayList<String> new_list = new ArrayList<String>();
+
+                    filters.setImpEmails(new_list);
+
+                    TextView imp_emails = findViewById(R.id.textView14);
+
+                    String imp_emails_str = "";
+                    for (int i = 0; i < filters.getImpEmails().size(); i++) {
+
+                        if (i == filters.getImpEmails().size() - 1) {
+                            imp_emails_str += filters.getImpEmails().get(i);
+                        } else {
+                            imp_emails_str += filters.getImpEmails().get(i) + ", ";
+                        }
+                    }
+                    imp_emails.setText(imp_emails_str);
+                    g.setFilters(filters);
+                }
+
+            }
+        });
+
 
         Button impEmailHomeButton = (Button)findViewById(R.id.impEmailHomeButton);
         impEmailHomeButton.setOnClickListener(new View.OnClickListener() {
