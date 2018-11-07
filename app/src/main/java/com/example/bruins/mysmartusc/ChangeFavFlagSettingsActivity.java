@@ -42,39 +42,41 @@ public class ChangeFavFlagSettingsActivity extends AppCompatActivity {
         fav_flags.setText(getCurrent());
 
         //for parsing the newly entered unimportant emails
-        Button changeFavFlagsSetButton = (Button)findViewById(R.id.changeFavFlagSetButton);
+        Button changeFavFlagsSetButton = (Button)findViewById(R.id.changeFavFlagClearButton);
         System.out.println(changeFavFlagsSetButton);
         changeFavFlagsSetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                TextView fav_flags = findViewById(R.id.textView12);
                 TextInputEditText favFlags = (TextInputEditText) findViewById(R.id.changeFavFlagInput);
                 String favFlags_string = favFlags.getText().toString();
-                System.out.println(favFlags_string);
-
+//                System.out.println(favFlags_string);
+//
                 if (favFlags_string.length() > 0) {
-                    ArrayList<String> fav_flags_list = new ArrayList<String>(Arrays.asList(favFlags_string.split("\\s*,\\s*")));
-                    for (int i = 0; i < fav_flags_list.size(); i++){
-                        System.out.println("this is a word in Fav/Flags list: " + fav_flags_list.get(i));
-                    }
-                    filters.setFlagwords(fav_flags_list);
-                    g.setFilters(filters);
+//                    ArrayList<String> fav_flags_list = new ArrayList<String>(Arrays.asList(favFlags_string.split("\\s*,\\s*")));
+//                    for (int i = 0; i < fav_flags_list.size(); i++){
+//                        System.out.println("this is a word in Fav/Flags list: " + fav_flags_list.get(i));
+//                    }
+//                    filters.setFlagwords(fav_flags_list);
+//                    g.setFilters(filters);
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter replacement Fav/Flag keywords if you'd like to make a change", Toast.LENGTH_SHORT).show();
                 }
 
-                TextView fav_flags = findViewById(R.id.textView12);
+
 
                 String fav_flags_str = "";
-                for (int i = 0; i < filters.getFlagwords().size(); i++) {
-
-                    if (i == filters.getFlagwords().size() - 1) {
-                        fav_flags_str += filters.getFlagwords().get(i);
-                    } else {
-                        fav_flags_str += filters.getFlagwords().get(i) + ", ";
-                    }
-                }
+//                for (int i = 0; i < filters.getFlagwords().size(); i++) {
+//
+//                    if (i == filters.getFlagwords().size() - 1) {
+//                        fav_flags_str += filters.getFlagwords().get(i);
+//                    } else {
+//                        fav_flags_str += filters.getFlagwords().get(i) + ", ";
+//                    }
+//                }
                 fav_flags.setText(fav_flags_str);
+                ArrayList<String> fav_flags_list = new ArrayList<String>(Arrays.asList(""));
+                filters.setFlagwords(fav_flags_list);
             }
         });
 
