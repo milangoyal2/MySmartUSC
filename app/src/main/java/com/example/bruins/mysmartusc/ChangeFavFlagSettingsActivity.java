@@ -1,5 +1,6 @@
 package com.example.bruins.mysmartusc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -148,6 +149,14 @@ public class ChangeFavFlagSettingsActivity extends AppCompatActivity {
             }
         });
 
+        Button impFavFlagHomeButton = (Button)findViewById(R.id.favFlagHomeButton);
+        impFavFlagHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent overview = new Intent(ChangeFavFlagSettingsActivity.this, HomePageActivity.class);
+                startActivity(overview);
+            }
+        });
 
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.change_favflag_settings_layout);
@@ -196,14 +205,7 @@ public class ChangeFavFlagSettingsActivity extends AppCompatActivity {
 //            }
 //        });
 //
-//        Button impFavFlagHomeButton = (Button)findViewById(R.id.favFlagHomeButton);
-//        impFavFlagHomeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent overview = new Intent(ChangeFavFlagSettingsActivity.this, HomePageActivity.class);
-//                startActivity(overview);
-//            }
-//        });
+
 
     }
 
