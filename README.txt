@@ -1,5 +1,11 @@
 README.txt - MySmartUSC
 
+Improved capabilities from Sprint 1:
+1. Can now add/delete individual keywords from each filter list as opposed to having to retype entire lists each time.
+2. Added start/stop listening capability so that you can toggle whether or not you would like the app to parse emails and send notifs.
+3. Added case insensitivity to keyword parsing so that an email with the subject SOCCER will trigger a notif even if the keyword is soccer.
+4. Improved layouts for an overall cleaner user experience.
+
 Steps to run our application
 
 1. Import complete project to Android Studio (version 3.0 or newer required)
