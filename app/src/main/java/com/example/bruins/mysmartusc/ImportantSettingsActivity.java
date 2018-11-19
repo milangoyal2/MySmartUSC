@@ -54,19 +54,50 @@ public class ImportantSettingsActivity extends AppCompatActivity {
                 ArrayList<String> flagwords_list = new ArrayList<String>
                         (Arrays.asList(flagwords.split("\\s*,\\s*")));
 
-                filters.setImpEmails(emails_list);
-                filters.setImpKeywords(content_list);
-                filters.setImpSubwords(subject_list);
-                filters.setFlagwords(flagwords_list);
+                boolean error = false;
+                for (int i = 0; i < emails_list.size(); i++) {
+                    if (emails_list.get(i).contains(" ")) {
+                        error = true;
+                        Toast.makeText(getApplicationContext(), "Improper formatting in emails list...",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                for (int i = 0; i < subject_list.size(); i++) {
+                    if (subject_list.get(i).contains(" ")) {
+                        error = true;
+                        Toast.makeText(getApplicationContext(), "Improper formatting in subject list...",Toast.LENGTH_SHORT).show();
+                    }
+                }                for (int i = 0; i < content_list.size(); i++) {
+                    if (content_list.get(i).contains(" ")) {
+                        error = true;
+                        Toast.makeText(getApplicationContext(), "Improper formatting in content list...",Toast.LENGTH_SHORT).show();
+                    }
+                }                for (int i = 0; i < flagwords_list.size(); i++) {
+                    if (flagwords_list.get(i).contains(" ")) {
+                        error = true;
+                        Toast.makeText(getApplicationContext(), "Improper formatting in flagwords list...",Toast.LENGTH_SHORT).show();
+                    }
+                }
 
-                //sets global EmailFilters variable
-                g.setFilters(filters);
+                if (!error) {
+                    emails_list.remove("");
+                    content_list.remove("");
+                    subject_list.remove("");
+                    flagwords_list.remove("");
+                    filters.setImpEmails(emails_list);
+                    filters.setImpKeywords(content_list);
+                    filters.setImpSubwords(subject_list);
+                    filters.setFlagwords(flagwords_list);
 
-                // move to next layout:
-                Toast.makeText(getApplicationContext(),
-                        "Redirecting...",Toast.LENGTH_SHORT).show();
-                Intent HomepageIntent = new Intent(ImportantSettingsActivity.this, HomePageActivity.class);
-                startActivity(HomepageIntent);
+                    //sets global EmailFilters variable
+                    g.setFilters(filters);
+
+                    // move to next layout:
+                    Toast.makeText(getApplicationContext(),
+                            "Redirecting...",Toast.LENGTH_SHORT).show();
+                    Intent HomepageIntent = new Intent(ImportantSettingsActivity.this, HomePageActivity.class);
+                    startActivity(HomepageIntent);
+                }
+
             }
         });
 

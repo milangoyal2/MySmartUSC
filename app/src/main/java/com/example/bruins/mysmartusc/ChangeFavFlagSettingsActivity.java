@@ -54,28 +54,40 @@ public class ChangeFavFlagSettingsActivity extends AppCompatActivity {
 
                 if (newInputString.length() > 0) {
                     ArrayList<String> new_list = new ArrayList<String>(Arrays.asList(newInputString.split("\\s*,\\s*")));
-                    ArrayList<String> old_list = filters.getFlagwords();
+
+                    boolean error = false;
                     for (int i = 0; i < new_list.size(); i++) {
-                        if (!old_list.contains(new_list.get(i))) {
-                            old_list.add(new_list.get(i));
+                        if (new_list.get(i).contains(" ")) {
+                            error = true;
+                            Toast.makeText(getApplicationContext(), "Improper formatting in list...",Toast.LENGTH_SHORT).show();
                         }
                     }
 
-                    filters.setFlagwords(old_list);
-
-                    TextView fav_flags = findViewById(R.id.textView12);
-
-                    String fav_flags_str = "";
-                    for (int i = 0; i < filters.getFlagwords().size(); i++) {
-
-                        if (i == filters.getFlagwords().size() - 1) {
-                            fav_flags_str += filters.getFlagwords().get(i);
-                        } else {
-                            fav_flags_str += filters.getFlagwords().get(i) + ", ";
+                    if (!error) {
+                        ArrayList<String> old_list = filters.getFlagwords();
+                        for (int i = 0; i < new_list.size(); i++) {
+                            if (!old_list.contains(new_list.get(i))) {
+                                old_list.add(new_list.get(i));
+                            }
                         }
+
+                        filters.setFlagwords(old_list);
+
+                        TextView fav_flags = findViewById(R.id.textView12);
+
+                        String fav_flags_str = "";
+                        for (int i = 0; i < filters.getFlagwords().size(); i++) {
+
+                            if (i == filters.getFlagwords().size() - 1) {
+                                fav_flags_str += filters.getFlagwords().get(i);
+                            } else {
+                                fav_flags_str += filters.getFlagwords().get(i) + ", ";
+                            }
+                        }
+                        fav_flags.setText(fav_flags_str);
+                        g.setFilters(filters);
                     }
-                    fav_flags.setText(fav_flags_str);
-                    g.setFilters(filters);
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter replacement emails if you'd like to make a change", Toast.LENGTH_SHORT).show();
                 }

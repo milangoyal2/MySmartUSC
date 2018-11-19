@@ -53,28 +53,40 @@ public class ChangeImpSubwordsActivity extends AppCompatActivity {
 
                 if (newInputString.length() > 0) {
                     ArrayList<String> new_list = new ArrayList<String>(Arrays.asList(newInputString.split("\\s*,\\s*")));
-                    ArrayList<String> old_list = filters.getImpSubwords();
+
+                    boolean error = false;
                     for (int i = 0; i < new_list.size(); i++) {
-                        if (!old_list.contains(new_list.get(i))) {
-                            old_list.add(new_list.get(i));
+                        if (new_list.get(i).contains(" ")) {
+                            error = true;
+                            Toast.makeText(getApplicationContext(), "Improper formatting in list...",Toast.LENGTH_SHORT).show();
                         }
                     }
 
-                    filters.setImpSubwords(old_list);
-
-                    TextView imp_subwords = findViewById(R.id.textView20);
-
-                    String imp_subwords_str = "";
-                    for (int i = 0; i < filters.getImpSubwords().size(); i++) {
-
-                        if (i == filters.getImpSubwords().size() - 1) {
-                            imp_subwords_str += filters.getImpSubwords().get(i);
-                        } else {
-                            imp_subwords_str += filters.getImpSubwords().get(i) + ", ";
+                    if (!error) {
+                        ArrayList<String> old_list = filters.getImpSubwords();
+                        for (int i = 0; i < new_list.size(); i++) {
+                            if (!old_list.contains(new_list.get(i))) {
+                                old_list.add(new_list.get(i));
+                            }
                         }
+
+                        filters.setImpSubwords(old_list);
+
+                        TextView imp_subwords = findViewById(R.id.textView20);
+
+                        String imp_subwords_str = "";
+                        for (int i = 0; i < filters.getImpSubwords().size(); i++) {
+
+                            if (i == filters.getImpSubwords().size() - 1) {
+                                imp_subwords_str += filters.getImpSubwords().get(i);
+                            } else {
+                                imp_subwords_str += filters.getImpSubwords().get(i) + ", ";
+                            }
+                        }
+                        imp_subwords.setText(imp_subwords_str);
+                        g.setFilters(filters);
                     }
-                    imp_subwords.setText(imp_subwords_str);
-                    g.setFilters(filters);
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Please enter replacement emails if you'd like to make a change", Toast.LENGTH_SHORT).show();
                 }

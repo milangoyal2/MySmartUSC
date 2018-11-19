@@ -90,28 +90,40 @@ public class ChangeImpEmailsSettingsActivity extends AppCompatActivity {
 
                 if (newInputString.length() > 0) {
                     ArrayList<String> new_list = new ArrayList<String>(Arrays.asList(newInputString.split("\\s*,\\s*")));
-                    ArrayList<String> old_list = filters.getImpEmails();
+
+                    boolean error = false;
                     for (int i = 0; i < new_list.size(); i++) {
-                        if (old_list.contains(new_list.get(i))) {
-                            old_list.remove(new_list.get(i));
+                        if (new_list.get(i).contains(" ")) {
+                            error = true;
+                            Toast.makeText(getApplicationContext(), "Improper formatting in list...",Toast.LENGTH_SHORT).show();
                         }
                     }
 
-                    filters.setImpEmails(old_list);
-
-                    TextView imp_emails = findViewById(R.id.textView14);
-
-                    String imp_emails_str = "";
-                    for (int i = 0; i < filters.getImpEmails().size(); i++) {
-
-                        if (i == filters.getImpEmails().size() - 1) {
-                            imp_emails_str += filters.getImpEmails().get(i);
-                        } else {
-                            imp_emails_str += filters.getImpEmails().get(i) + ", ";
+                    if (!error) {
+                        ArrayList<String> old_list = filters.getImpEmails();
+                        for (int i = 0; i < new_list.size(); i++) {
+                            if (old_list.contains(new_list.get(i))) {
+                                old_list.remove(new_list.get(i));
+                            }
                         }
+
+                        filters.setImpEmails(old_list);
+
+                        TextView imp_emails = findViewById(R.id.textView14);
+
+                        String imp_emails_str = "";
+                        for (int i = 0; i < filters.getImpEmails().size(); i++) {
+
+                            if (i == filters.getImpEmails().size() - 1) {
+                                imp_emails_str += filters.getImpEmails().get(i);
+                            } else {
+                                imp_emails_str += filters.getImpEmails().get(i) + ", ";
+                            }
+                        }
+                        imp_emails.setText(imp_emails_str);
+                        g.setFilters(filters);
                     }
-                    imp_emails.setText(imp_emails_str);
-                    g.setFilters(filters);
+
                 }
 
             }
