@@ -13,8 +13,9 @@
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="308dp"
-        android:layout_height="39dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".95"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Any emails that don't match will be marked as read."
@@ -25,8 +26,9 @@
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="310dp"
-        android:layout_height="52dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".95"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:text="Enter keywords for low priority notifications. These emails will simply be starred and favorited in your inbox."
@@ -37,8 +39,9 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="308dp"
-        android:layout_height="41dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".95"
+        android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="98dp"
@@ -56,8 +59,9 @@
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="310dp"
-        android:layout_height="40dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".95"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Important Content Keywords"
@@ -70,8 +74,9 @@
 
     <EditText
         android:id="@+id/editText3"
-        android:layout_width="311dp"
-        android:layout_height="45dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".95"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Important Subject Keywords"
@@ -85,8 +90,9 @@
 
     <EditText
         android:id="@+id/editText4"
-        android:layout_width="318dp"
-        android:layout_height="39dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".95"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
@@ -116,9 +122,10 @@
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="300dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="60dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".95"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Enter comma seperated keywords. You will get notifications for emails that match these keywords."
         app:layout_constraintStart_toStartOf="@+id/editText"
         app:layout_constraintTop_toTopOf="parent" />
