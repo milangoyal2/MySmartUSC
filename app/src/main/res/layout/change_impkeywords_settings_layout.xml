@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient">
 
     <Button
+        android:background="@color/colorEditText"
+        android:textColor="@color/pastelGreen"
         android:id="@+id/impKeywordsSetButton"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -17,6 +20,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
 
     <Button
+        android:background="@color/colorEditText"
+        android:textColor="@color/pastelGreen"
         android:id="@+id/clearButton3"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -27,6 +32,8 @@
         app:layout_constraintTop_toBottomOf="@+id/impKeywordsSetButton" />
 
     <Button
+        android:background="@color/colorEditText"
+        android:textColor="@color/pastelGreen"
         android:id="@+id/impKeywordsHomeButton"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -109,6 +116,8 @@
     </android.support.constraint.ConstraintLayout>
 
     <Button
+        android:background="@color/colorEditText"
+        android:textColor="@color/pastelGreen"
         android:id="@+id/deleteButton3"
         android:layout_width="wrap_content"
         android:layout_height="50dp"

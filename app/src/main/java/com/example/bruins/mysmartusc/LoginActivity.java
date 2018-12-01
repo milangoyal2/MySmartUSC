@@ -36,10 +36,18 @@ public class LoginActivity extends AppCompatActivity {
         ed2 = findViewById(R.id.editText2);
 
         TextView textView =(TextView)findViewById(R.id.textView11);
+        TextView textBlurb =(TextView)findViewById(R.id.textBlurb);
         textView.setClickable(true);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
         String text = "Note: If your google account has 2 Step Authorization, <a href='https://myaccount.google.com/apppasswords'>click here</a> to make an app password for this device. Use generated 16 character password in the field above";
+        String blurb = "Overwhelmed by always getting email notifications?<br>" +
+                "Want to parse out your life?<br>" +
+                "Looking for <font color=\"red\">love</font>?<br>" +
+                "MySmartUSC is a notification manager for busy USC students! " +
+                "Add a list of emails and keywords you want to be notified for, and MySmartUSC will do the rest, only asking for your attention when it's a truly important moment of life.\n" +
+                "Sign up to get started:";
         textView.setText(Html.fromHtml(text));
+        textBlurb.setText(Html.fromHtml(blurb));
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
