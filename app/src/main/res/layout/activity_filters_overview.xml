@@ -106,7 +106,8 @@
         android:layout_height="wrap_content"
         android:text="Button"
         tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="416dp" />
+        tools:layout_editor_absoluteY="416dp"
+        tools:ignore="MissingConstraints" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"

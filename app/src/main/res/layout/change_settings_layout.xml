@@ -16,7 +16,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeImpEmailsButton"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".75" />
+        app:layout_constraintWidth_percent=".75"
+        android:layout_width="0dp"/>
 
     <Button
         android:id="@+id/changeImpEmailsButton"
@@ -28,7 +29,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeImpSubwordsButton"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".75" />
+        app:layout_constraintWidth_percent=".75"
+        android:layout_width="0dp"/>
 
     <Button
         android:id="@+id/changeImpSubwordsButton"
@@ -40,7 +42,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeFavFlagButton"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".75" />
+        app:layout_constraintWidth_percent=".75"
+        android:layout_width="0dp"/>
 
     <Button
         android:id="@+id/changeFavFlagButton"
@@ -51,6 +54,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".75" />
+        app:layout_constraintWidth_percent=".75"
+        android:layout_width="0dp"/>
 
 </android.support.constraint.ConstraintLayout>
