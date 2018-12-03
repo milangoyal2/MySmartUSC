@@ -8,4 +8,26 @@
     <string name="title_activity_send_mail">SendMailActivity</string>
     <string name="title_activity_change_imp_emails_settings">ChangeImpEmailsSettingsActivity
     </string>
+
+    <!--for the notification settings spinner-->
+    <string-array name="sender_array">
+        <item>HIGH</item>
+        <item>LOW</item>
+    </string-array>
+
+    <string-array name="subject_array">
+        <item>HIGH</item>
+        <item>LOW</item>
+    </string-array>
+
+    <string-array name="content_array">
+        <item>HIGH</item>
+        <item>LOW</item>
+    </string-array>
+
+    <string-array name="flag_array">
+        <item>LOW</item>
+        <item>HIGH</item>
+    </string-array>
+
 </resources>

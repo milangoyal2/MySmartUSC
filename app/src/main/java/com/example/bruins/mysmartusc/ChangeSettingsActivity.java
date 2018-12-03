@@ -20,6 +20,7 @@ public class ChangeSettingsActivity extends AppCompatActivity {
         Button importantSubwordsButton = (Button)findViewById(R.id.changeImpSubwordsButton);
         Button importantEmailsButton = (Button)findViewById(R.id.changeImpEmailsButton);
         Button importantKeywordsButton = (Button)findViewById(R.id.changeImpKeywordsButton);
+        Button changeNotificationsButton = (Button)findViewById(R.id.changeNotificationsButton);
 
         favFlagButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +61,17 @@ public class ChangeSettingsActivity extends AppCompatActivity {
                 startActivity(changeSpecSettingsIntent);
             }
         });
+
+        changeNotificationsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent changeSpecSettingsIntent = new Intent(ChangeSettingsActivity.this, ChangeNotificationsActivity.class);
+                startActivity(changeSpecSettingsIntent);
+            }
+        });
+
+
 
 
     }

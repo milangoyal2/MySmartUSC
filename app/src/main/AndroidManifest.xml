@@ -24,18 +24,6 @@
             android:label="ImportantSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".UnimSettingsActivity"
-            android:label="UnimSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".FiltersOverviewActivity"
-            android:label="FiltersOverviewActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SendMailActivity"
-            android:label="@string/title_activity_send_mail" />
-
-        <activity
             android:name=".ChangeSettingsActivity"
             android:label="ChangeSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
@@ -62,10 +50,15 @@
             android:label="ChangeFavFlagSettingsActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-
+        <activity
+            android:name=".ChangeNotificationsActivity"
+            android:label="ChangeNotificationsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <service
+            android:name="com.example.bruins.mysmartusc"
+            android:process=":externalProcess"
+            tools:ignore="WrongManifestParent" />
     </application>
-    <service
-        android:name="com.example.bruins.mysmartusc"
-        android:process=":externalProcess"
-        tools:ignore="WrongManifestParent" />
+
 </manifest>

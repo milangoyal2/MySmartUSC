@@ -7,6 +7,19 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/changeNotificationsButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:baselineAligned="false"
+        android:text="Change Notification Settings"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeImpKeywordsButton"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".75" />
+
+    <Button
         android:id="@+id/changeImpKeywordsButton"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -21,6 +34,7 @@
 
     <Button
         android:id="@+id/changeImpEmailsButton"
+        android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginTop="20dp"
         android:baselineAligned="false"
@@ -29,8 +43,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeImpSubwordsButton"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent=".75"
-        android:layout_width="0dp"/>
+        app:layout_constraintWidth_percent=".75" />
 
     <Button
         android:id="@+id/changeImpSubwordsButton"
