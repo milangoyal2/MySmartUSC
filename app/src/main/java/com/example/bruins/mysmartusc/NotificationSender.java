@@ -19,7 +19,7 @@ public class NotificationSender {
             mNotificationUtils.getManager().notify(NotificationID.getID(), nb.build());
         }
 
-        else if (type == 2) {
+        else if (type == 0) {
             Notification.Builder nb = mNotificationUtils.getUnimportantChannelNotification(title, subject, body);
             mNotificationUtils.getManager().notify(NotificationID.getID(), nb.build());
         }

@@ -14,6 +14,8 @@ public class NotificationUtils extends ContextWrapper {
     public static final String ANDROID_CHANNEL_ID = "com.chikeandroid.tutsplustalerts.ANDROID";
 
     public static final String ANDROID_CHANNEL_NAME = "ANDROID CHANNEL";
+
+    public static final String UNIMPORTANT_CHANNEL_ID = "com.chikeandroid.tutsplustalerts.UNIMPORTANT";
     public static final String UNIMPORTANT_CHANNEL_NAME = "UNIMPORTANT CHANNEL";
 
 
@@ -44,9 +46,11 @@ public class NotificationUtils extends ContextWrapper {
 
 
         //
-        NotificationChannel unimportantChannel = new NotificationChannel(ANDROID_CHANNEL_ID,
-                UNIMPORTANT_CHANNEL_NAME, NotificationManager.IMPORTANCE_LOW);
+        NotificationChannel unimportantChannel = new NotificationChannel(UNIMPORTANT_CHANNEL_ID,
+                UNIMPORTANT_CHANNEL_NAME, NotificationManager.IMPORTANCE_MIN);
         unimportantChannel.setShowBadge(true);
+        unimportantChannel.setImportance(NotificationManager.IMPORTANCE_MIN);
+        unimportantChannel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
 
         getManager().createNotificationChannel(unimportantChannel);
 
@@ -70,11 +74,10 @@ public class NotificationUtils extends ContextWrapper {
     }
 
     public Notification.Builder getUnimportantChannelNotification(String title, String subject, String body) {
-        return new Notification.Builder(getApplicationContext(), ANDROID_CHANNEL_ID)
+        return new Notification.Builder(getApplicationContext(), UNIMPORTANT_CHANNEL_ID)
                 .setSmallIcon(android.R.drawable.stat_notify_more)
                 .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
-                .setContentTitle("You got an email that was favorited");
+                .setContentTitle("You got an email with low priority")
+                .setVisibility(Notification.VISIBILITY_SECRET);
     }
-
-
 }

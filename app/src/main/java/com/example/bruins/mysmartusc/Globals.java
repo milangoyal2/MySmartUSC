@@ -11,11 +11,18 @@ public class Globals {
     private IMAPStore store;
     private ServiceClass service;
     private EmailFilters filters;
+    public int keywordsNotification;
+    public int flagNotification;
+
     // Restrict the constructor from being instantiated
     private Globals(){
         store = null;
         service = null;
         filters = new EmailFilters();
+
+        //notification types:
+        keywordsNotification = 1;
+        flagNotification = 0;
     }
 
     public void setStore(IMAPStore s){

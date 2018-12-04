@@ -70,6 +70,11 @@ public class IdleRunnable implements Runnable {
         boolean found = false;
         boolean flags = false;
 
+        boolean sender = false;
+        boolean subject = false;
+        boolean content = false;
+
+
         EmailFilters mEmailFilters = Globals.getInstance().getFilters();
         ArrayList<String> impSubKeywords = mEmailFilters.getImpSubwords();
         ArrayList<String> impContKeywords = mEmailFilters.getImpKeywords();
@@ -122,7 +127,7 @@ public class IdleRunnable implements Runnable {
 
         if (found) {
             if (flags) {
-                // Mark as favorite
+                // flags notification type
                 return 2;
             }
             return 1;
@@ -186,8 +191,16 @@ public class IdleRunnable implements Runnable {
 
                         try {
                             System.out.println("Notification type: " + notificationType);
+                            int notif = 1;
 
-                            notificationSender.SendNotification(notificationType,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
+                            if (notificationType == 1) {
+                                notif = Globals.getInstance().keywordsNotification;
+                            } else if (notificationType == 2) {
+                                notif = Globals.getInstance().flagNotification;
+                            }
+
+                            System.out.println("Notification type: " + notif);
+                            notificationSender.SendNotification(notif,"New Email from: " + InternetAddress.toString(message.getFrom()) ,"subject: " + message.getSubject(), getTextFromMessage(message));
                             if (notificationType == 1 || notificationType == 2) {
                                 folder.setFlags(new Message[] {message}, new Flags(Flags.Flag.SEEN), false);
                             }
