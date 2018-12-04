@@ -21,6 +21,7 @@ public class ChangeSettingsActivity extends AppCompatActivity {
         Button importantEmailsButton = (Button)findViewById(R.id.changeImpEmailsButton);
         Button importantKeywordsButton = (Button)findViewById(R.id.changeImpKeywordsButton);
         Button changeNotificationsButton = (Button)findViewById(R.id.changeNotificationsButton);
+        Button goHomeButton = (Button)findViewById(R.id.settingsHomeButton);
 
         favFlagButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +72,14 @@ public class ChangeSettingsActivity extends AppCompatActivity {
             }
         });
 
+        goHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent homeIntent = new Intent(ChangeSettingsActivity.this, HomePageActivity.class);
+                startActivity(homeIntent);
+            }
+        });
 
 
 

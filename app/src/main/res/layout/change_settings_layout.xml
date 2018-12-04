@@ -10,6 +10,21 @@
     <Button
         android:background="@color/colorEditText"
         android:textColor="@color/pastelGreen"
+        android:id="@+id/settingsHomeButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:baselineAligned="false"
+        android:text="Go Home"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeNotificationsButton"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".75" />
+
+    <Button
+        android:background="@color/colorEditText"
+        android:textColor="@color/pastelGreen"
         android:id="@+id/changeNotificationsButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

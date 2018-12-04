@@ -114,6 +114,8 @@
 
 
     <Button
+        android:background="@color/colorEditText"
+        android:textColor="@color/pastelGreen"
         android:id="@+id/button"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
