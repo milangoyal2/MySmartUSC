@@ -6,6 +6,20 @@ Improved capabilities from Sprint 1:
 3. Added case insensitivity to keyword parsing so that an email with the subject SOCCER will trigger a notif even if the keyword is soccer.
 4. Improved layouts for an overall cleaner user experience.
 
+Improved capabilities from Sprint 2:
+1. Email notifications are now only sent for emails incoming after the user clicks the "Start Listening" button. Prior to this update, notifications were being sent for older emails sent up to midnight of the same day. 
+2. Added error checking on all filter list form inputs. The app will reject phrases (anything that contains a space) and inform the user of bad input.
+3. Fixed a problem where several of the button throughout the app were sticky and not responding on the first click.
+4. Began initial step of total redesign of app layouts by changing the login screen and several small changes in the other layouts. 
+
+Improved capabilities from Sprint 3:
+1. Totaly redesign of app is complete and now offers more intuitive and aesthetic designs/ayouts. Every single layout has been completely redesigned with new color schemes and component poisitioning. 
+2. Can now set notification type (intensity level) for each email filter list. For example, HIGH notification type will show additional information about the email in the notification and also show up on the lock screen.
+3. All four settings pages have both a clear button and home button for easier user interface.
+4. Fixed a bug where leaving a filter blank could lead to some unintended behavior.
+
+MySmartUSC is a mobile android application that allows you to login to any gmail account and receive notifications for received emails you deem important. Users can enter keywords seperated into 4 categories for which our app will check if any incoming email contains and send an appropriate notification. The four categories are: 1) Email address of sender 2) Subject line keywords 3) Content (email body) keywords and 4) Flag keywords for which our app will mark the email as starred so that you can revisit it at a later time. 
+
 Steps to run our application
 
 1. Import complete project to Android Studio (version 3.0 or newer required)
@@ -27,7 +41,7 @@ Notifications:
 -Notifications will only be given for emails that have been sent after the application has started.
 
 
-Important keywords and Emails:
+Important keywords and emails:
 -To view each keyword and email field, go to where the keywords and emails are changed (press the settings button, then change __ button).
 -Emails sent prior to keyword changes will not trigger a notification
 -Keywords will not be recognized as substrings (for example, entering the keyword "just" will not recognize an email containing the word justice)
